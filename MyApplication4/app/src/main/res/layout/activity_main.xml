@@ -22,19 +22,27 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/Boton_ini_ini"
         android:layout_width="207dp"
         android:layout_height="49dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="20dp"
         android:text="Iniciar Sesion"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="454dp" />
+        app:layout_constraintBottom_toTopOf="@+id/Boton_ini_regis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/Boton_ini_regis"
         android:layout_width="207dp"
         android:layout_height="49dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="159dp"
         android:text="Registrarse"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="523dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
