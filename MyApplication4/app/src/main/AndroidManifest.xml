@@ -13,6 +13,15 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".assisted_user_form"
+            android:exported="false" />
+        <activity
+            android:name=".user_tipe"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
             android:name=".iniciar_sesion"
             android:exported="false" />
         <activity

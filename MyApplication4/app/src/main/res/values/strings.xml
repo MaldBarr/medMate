@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="name">Nombre</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="assisted_user_name">Nombre usuario asistido</string>
+    <string name="age">Edad</string>
 </resources>
