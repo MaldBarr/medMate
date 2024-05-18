@@ -23,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         boton_iniciar_sesion.setOnClickListener {
             startActivity(Intent(this, iniciar_sesion::class.java))
         }
+        val boton_registro = findViewById<Button>(R.id.Boton_ini_regis)
+        boton_registro.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
+        }
     }
 }
