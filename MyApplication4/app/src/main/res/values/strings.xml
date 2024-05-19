@@ -5,4 +5,17 @@
     <string name="password">Contraseña</string>
     <string name="assisted_user_name">Nombre usuario asistido</string>
     <string name="age">Edad</string>
+    <string name="title_activity_sidebar">sidebar</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Nombre de usuario</string>
+    <string name="nav_header_subtitle">correo.usuario@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_aboutUs">About Us</string>
+
 </resources>
