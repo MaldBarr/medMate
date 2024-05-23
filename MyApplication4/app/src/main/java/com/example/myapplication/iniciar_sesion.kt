@@ -3,11 +3,13 @@ package com.example.myapplication
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 
 class iniciar_sesion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +25,12 @@ class iniciar_sesion : AppCompatActivity() {
 
         val botonIniciarSesion = findViewById<Button>(R.id.iniciarsesion)
         botonIniciarSesion.setOnClickListener {
+            val correo = findViewById<EditText>(R.id.editTextTextEmailAddress2)
+            val contrasenia = findViewById<EditText>(R.id.editTextTextPassword2)
+            if (correo.text.isEmpty() || contrasenia.text.isEmpty()) {
+                mostrarAlertDialog()
+            }
             Log.d("AlertDialog", "Botón 'Iniciar Sesión' clickeado")
-            mostrarAlertDialog()
         }
     }
 
@@ -32,15 +38,11 @@ class iniciar_sesion : AppCompatActivity() {
         Log.d("AlertDialog", "Mostrando AlertDialog")
 
         AlertDialog.Builder(this)
-            .setTitle("Título")
-            .setMessage("Detalle")
+            .setTitle("Error")
+            .setMessage("Correo o Contraseña son incorrectos")
             .setPositiveButton("Aceptar") { dialog, id ->
                 Log.d("AlertDialog", "Aceptar clickeado")
                 // Acción al hacer clic en Aceptar
-            }
-            .setNegativeButton("Cancelar") { dialog, id ->
-                Log.d("AlertDialog", "Cancelar clickeado")
-                // Acción al hacer clic en Cancelar
             }
             .show()
     }
