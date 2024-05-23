@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -29,6 +30,10 @@ class iniciar_sesion : AppCompatActivity() {
             val contrasenia = findViewById<EditText>(R.id.editTextTextPassword2)
             if (correo.text.isEmpty() || contrasenia.text.isEmpty()) {
                 mostrarAlertDialog()
+            }
+            else
+            {
+                startActivity(Intent(this, sidebar::class.java))
             }
             Log.d("AlertDialog", "Botón 'Iniciar Sesión' clickeado")
         }
