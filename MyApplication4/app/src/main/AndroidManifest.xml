@@ -18,11 +18,6 @@
             android:label="@string/title_activity_slidebar"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
-            android:name=".sidebar"
-            android:exported="false"
-            android:label="@string/title_activity_sidebar"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity
             android:name=".assisted_user_form"
             android:exported="false" />
         <activity
@@ -33,9 +28,6 @@
             android:exported="false" />
         <activity
             android:name=".iniciar_sesion"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

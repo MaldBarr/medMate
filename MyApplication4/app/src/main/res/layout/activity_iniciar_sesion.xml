@@ -29,6 +29,7 @@
         android:layout_marginEnd="184dp"
         android:layout_marginBottom="4dp"
         android:text="Correo"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -54,6 +55,7 @@
         android:layout_marginEnd="177dp"
         android:layout_marginBottom="4dp"
         android:text="Contraseña"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
