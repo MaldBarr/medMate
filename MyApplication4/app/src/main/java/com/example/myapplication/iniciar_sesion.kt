@@ -33,7 +33,7 @@ class iniciar_sesion : AppCompatActivity() {
             }
             else
             {
-                startActivity(Intent(this, sidebar::class.java))
+                startActivity(Intent(this, slidebar::class.java))
             }
             Log.d("AlertDialog", "Botón 'Iniciar Sesión' clickeado")
         }

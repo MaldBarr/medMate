@@ -21,7 +21,7 @@ class user_tipe : AppCompatActivity() {
         val boton_cuidador = findViewById<Button>(R.id.button2)
         val boton_paciente = findViewById<Button>(R.id.button)
         boton_paciente.setOnClickListener {
-            startActivity(Intent(this, sidebar::class.java))
+            startActivity(Intent(this, slidebar::class.java))
         }
 
         boton_cuidador.setOnClickListener {

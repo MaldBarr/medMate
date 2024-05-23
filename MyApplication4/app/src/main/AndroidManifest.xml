@@ -13,6 +13,11 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".slidebar"
+            android:exported="false"
+            android:label="@string/title_activity_slidebar"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
             android:name=".sidebar"
             android:exported="false"
             android:label="@string/title_activity_sidebar"
