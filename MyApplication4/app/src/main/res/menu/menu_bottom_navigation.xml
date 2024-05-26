@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/page_library"
+        android:icon="@drawable/ic_library"
+        android:title="Biblioteca" />
+    <item
+        android:id="@+id/page_add"
+        android:icon="@drawable/ic_add_square"
+        android:title="Añadir" />
+    <item
+        android:id="@+id/page_notification"
+        android:icon="@drawable/ic_message"
+        android:title="Notificaciones" />
+    <item
+        android:id="@+id/page_more"
+        android:icon="@drawable/ic_more"
+        android:title="Más" />
+</menu>
