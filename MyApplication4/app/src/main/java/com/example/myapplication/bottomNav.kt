@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +46,7 @@ class bottomNav : AppCompatActivity() {
         builder.setItems(options) { dialog, which ->
             when (which) {
                 0 -> {
-                    // Navegar al fragmento de agregar medicamento
+                    // Navegar a la actividad de agregar medicamento
                     navigateToAddMedicamento()
                 }
                 1 -> {
@@ -58,8 +59,7 @@ class bottomNav : AppCompatActivity() {
     }
 
     private fun navigateToAddMedicamento() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.add_medicamento_fragment)
+        val intent = Intent(this, AddMed::class.java)
+        startActivity(intent)
     }
 }
