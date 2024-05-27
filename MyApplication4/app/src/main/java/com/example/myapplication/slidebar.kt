@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Button
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -43,6 +44,37 @@ class slidebar : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        val lunes = findViewById<Button>(R.id.Lunes)
+        val martes = findViewById<Button>(R.id.Martes)
+        val miercoles = findViewById<Button>(R.id.Miercoles)
+        val jueves = findViewById<Button>(R.id.Jueves)
+        val viernes = findViewById<Button>(R.id.Viernes)
+        val sabado = findViewById<Button>(R.id.Sabado)
+        val domingo = findViewById<Button>(R.id.Domingo)
+
+        lunes.setOnClickListener {
+
+        }
+        martes.setOnClickListener {
+
+        }
+        miercoles.setOnClickListener {
+
+        }
+        jueves.setOnClickListener {
+
+        }
+        viernes.setOnClickListener {
+
+        }
+        sabado.setOnClickListener {
+
+        }
+        domingo.setOnClickListener {
+
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,4 +87,5 @@ class slidebar : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_slidebar)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }
