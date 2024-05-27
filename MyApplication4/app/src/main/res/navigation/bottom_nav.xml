@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_library" />
 
     <fragment
-        android:id="@+id/page_add"
+        android:id="@+id/add_medicamento_fragment"
         android:name="com.example.myapplication.ui.add.AddFragment"
         tools:layout="@layout/fragment_add" />
 
