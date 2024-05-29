@@ -7,6 +7,21 @@
     android:padding="16dp"
     tools:context=".ui.medstep.MedStep3Fragment">
 
-    <!-- Agrega los componentes necesarios para el tercer paso -->
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Con qué frecuencia se debe tomar el medicamento?"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:button="@drawable/selector_checkbox"><!-- no esta funcionando el cambio de color -->
+
+        <!-- RadioButtons se agregarán dinámicamente aquí -->
+    </RadioGroup>
 
 </LinearLayout>

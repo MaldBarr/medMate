@@ -21,4 +21,70 @@
         <item>Espuma</item>
         <item>Otro</item>
     </string-array>
+
+    <string-array name="frecuencia">
+        <item>Una vez al día</item>
+        <item>Varias veces al día</item>
+        <item>Día por medio</item>
+        <item>Días especificos de la semana</item>
+        <item>Ciclo recurrente</item>
+        <item>Cada X días</item>
+        <item>Cada x semanas</item>
+        <item>Cada x meses</item>
+        <item>Cuando sea necesario</item>
+    </string-array>
+
+    <string-array name="medicamentos">
+        <item>Paracetamol</item>
+        <item>Ibuprofeno</item>
+        <item>Aspirina</item>
+        <item>Amoxicilina</item>
+        <item>Omeprazol</item>
+        <item>Ciprofloxacino</item>
+        <item>Loratadina</item>
+        <item>Metformina</item>
+        <item>Simvastatina</item>
+        <item>Tramadol</item>
+        <item>Clonazepam</item>
+        <item>Metoclopramida</item>
+        <item>Diazepam</item>
+        <item>Dexametasona</item>
+        <item>Ranitidina</item>
+        <item>Sertralina</item>
+        <item>Atorvastatina</item>
+        <item>Prednisona</item>
+        <item>Enalapril</item>
+        <item>Furosemida</item>
+        <item>Amitriptilina</item>
+        <item>Losartán</item>
+        <item>Vitamina C</item>
+        <item>Magnesio</item>
+        <item>Calcio</item>
+        <item>Vitamina D</item>
+        <item>Bisoprolol</item>
+        <item>Levotiroxina</item>
+        <item>Metronidazol</item>
+        <item>Warfarina</item>
+        <item>Risperidona</item>
+        <item>Metoprolol</item>
+        <item>Fluoxetina</item>
+        <item>Alprazolam</item>
+        <item>Carbamazepina</item>
+        <item>Citalopram</item>
+        <item>Levodopa</item>
+        <item>Budesonida</item>
+        <item>Fluticasona</item>
+        <item>Metilfenidato</item>
+        <item>Olanzapina</item>
+        <item>Insulina</item>
+        <item>Clotrimazol</item>
+        <item>Aciclovir</item>
+        <item>Lansoprazol</item>
+        <item>Alendronato</item>
+        <item>Tadalafil</item>
+        <item>Sildenafilo</item>
+        <item>Dipirona</item>
+        <item>Loperamida</item>
+    </string-array>
+
 </resources>
