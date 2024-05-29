@@ -7,80 +7,27 @@
     tools:context=".ui.home.HomeFragment">
 
 
-    <Button
-        android:id="@+id/Lunes"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="L"
-        app:cornerRadius="0px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/Martes"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="M"
-        android:textAlignment="center"
-        app:cornerRadius="0px"
-        app:layout_constraintEnd_toStartOf="@+id/Miercoles"
-        app:layout_constraintStart_toEndOf="@+id/Lunes"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/Miercoles"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="M"
-        app:cornerRadius="0px"
-        app:layout_constraintEnd_toStartOf="@+id/Jueves"
-        app:layout_constraintStart_toEndOf="@+id/Martes"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Jueves"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="J"
-        app:cornerRadius="0px"
-        app:layout_constraintEnd_toStartOf="@+id/Viernes"
-        app:layout_constraintStart_toEndOf="@+id/Miercoles"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Viernes"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="V"
-        app:cornerRadius="0px"
-        app:layout_constraintEnd_toStartOf="@+id/Sabado"
-        app:layout_constraintStart_toEndOf="@+id/Jueves"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Sabado"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="S"
-        app:cornerRadius="0px"
-        app:layout_constraintEnd_toStartOf="@+id/Domingo"
-        app:layout_constraintStart_toEndOf="@+id/Viernes"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Domingo"
-        android:layout_width="59dp"
-        android:layout_height="50dp"
-        android:text="D"
-        app:cornerRadius="0px"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="243dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Jueves" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/bottom_nav" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,9 +3,25 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="app">
-        <State />
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="RF8T205NKVV" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-29T20:33:56.602624Z" />
+        </State>
       </entry>
       <entry key="iniciar_sesion">
+        <State />
+      </entry>
+      <entry key="slidebar">
         <State />
       </entry>
     </value>

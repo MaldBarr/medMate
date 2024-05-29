@@ -23,7 +23,6 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding.tvTexto.text = "Fragment Calendar"
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar, container, false)

@@ -1,18 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3F51B5"
     tools:context=".ui.calendar.CalendarFragment">
 
-    <TextView
-        android:id="@+id/tvTexto"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:hint="Calendario y medicamentos del día" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="103dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Lunes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="L"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Martes"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="M"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Miercoles"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="M"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Jueves"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="J"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Viernes"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="V"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Sabado"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="S"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:id="@+id/Domingo"
+                android:layout_width="wrap_content"
+                android:layout_height="103dp"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="D"
+                app:cornerRadius="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>
