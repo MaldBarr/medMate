@@ -39,6 +39,12 @@ export const createUsuario = async (req, res) => {
 export const updateUsuario = async (req, res) => {
     try {
         const usuario = await Modelusuario.findByPk(req.params.id);
+        if (!usuario) {
+            return res.status(404).json({
+                message: "Error",
+                error: "Usuario no encontrado"
+            });
+        }
         await usuario.update(req.body);
         res.json(usuario);
     } catch (error) {
@@ -52,6 +58,12 @@ export const updateUsuario = async (req, res) => {
 export const deleteUsuario = async (req, res) => {
     try {
         const usuario = await Modelusuario.findByPk(req.params.id);
+        if (!usuario) {
+            return res.status(404).json({
+                message: "Error",
+                error: "Usuario no encontrado"
+            });
+        }
         await usuario.destroy();
         res.json(usuario);
     } catch (error) {
@@ -71,7 +83,7 @@ export const iniciarSesion = async (req, res) => {
             }
         });
         if (usuario) {
-            res.json(true);
+            res.json(usuario);
         } else {
             res.status(404).json({
                 message: "Error",

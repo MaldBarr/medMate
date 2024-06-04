@@ -1,13 +1,11 @@
 import db from "../database/db.js";
-
 import { DataTypes } from "sequelize";
 
-db.define("usuario", {
+const usuario = db.define('usuario', {
     id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,
@@ -17,7 +15,15 @@ db.define("usuario", {
     },
     contrasenia: {
         type: DataTypes.STRING,
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
     }
+}, {
+    tableName: 'usuario', // Reemplaza con el nombre real de tu tabla
 });
 
-export default db.models.usuario;
+export default usuario;
