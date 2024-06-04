@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Medi-MATE</string>
     <string name="name">Nombre</string>
     <string name="email">Correo electrónico</string>
     <string name="password">Contraseña</string>
