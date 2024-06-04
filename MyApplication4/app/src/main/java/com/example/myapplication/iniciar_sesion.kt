@@ -1,19 +1,20 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import com.example.myapplication.data.RetrofitServiceFactory
+import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.data.RetrofitInstance
+import com.example.myapplication.data.models.LoginRequest
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class iniciar_sesion : AppCompatActivity() {
-
-    private val retrofitService = RetrofitServiceFactory.makeRetrofitService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,19 +26,29 @@ class iniciar_sesion : AppCompatActivity() {
             val contrasenia = findViewById<EditText>(R.id.editTextTextPassword2).text.toString()
 
             if (correo.isNotEmpty() && contrasenia.isNotEmpty()) {
-                // Llamada a la API dentro de un coroutine
-                GlobalScope.launch(Dispatchers.Main) {
-                    try {
-                        val result = retrofitService.iniciarSesion(correo, contrasenia)
-                        // Manejar el resultado de la API
-                        // Por ejemplo, navegar a otra actividad si la autenticación es exitosa
-                        startActivity(Intent(this@iniciar_sesion, slidebar::class.java))
-                    } catch (e: Exception) {
-                        mostrarAlertDialog("Error", "Error de conexión. Inténtelo de nuevo más tarde.")
-                    }
-                }
+                val loginRequest = LoginRequest(correo, contrasenia)
+                iniciarSesion(loginRequest)
             } else {
                 mostrarAlertDialog("Error", "Debe completar todos los campos.")
+            }
+        }
+    }
+
+    private fun iniciarSesion(loginRequest: LoginRequest) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = RetrofitInstance.api.login(loginRequest)
+
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    // Inicio de sesión exitoso
+                    val loginResponse = response.body()
+                    Log.d("LoginResponse", "Response: $loginResponse") // Loguear el loginResponse
+                    startActivity(Intent(this@iniciar_sesion, slidebar::class.java))
+                } else {
+                    // El servidor retornó un error
+                    // Puedes obtener más detalles con response.errorBody() y response.code()
+                    mostrarAlertDialog("Error", "Inicio de sesión fallido.")
+                }
             }
         }
     }

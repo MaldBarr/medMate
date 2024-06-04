@@ -11,10 +11,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/usuario', router);
-app.use('/', (req, res) => {
+/*app.use('/', (req, res) => {
     res.send('Hello World');
 }
-);
+);*/
 
 try
 {
