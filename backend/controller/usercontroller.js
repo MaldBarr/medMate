@@ -97,3 +97,16 @@ export const iniciarSesion = async (req, res) => {
         });
     }
 }
+
+
+export const registerUsuario = async (req, res) => {
+    try {
+        const usuario = await Modelusuario.create(req.body);
+        res.json(usuario);
+    } catch (error) {
+        res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}

@@ -8,19 +8,16 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/correo_nav_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Medi-Mate"
-        android:textColor="#FFFFFF"
-        android:textColorHighlight="#000000"
-        android:textSize="24sp"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="206dp"
+        android:layout_height="219dp"
+        android:src="@drawable/logo_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.347" />
 
     <Button
         android:id="@+id/Boton_ini_ini"
