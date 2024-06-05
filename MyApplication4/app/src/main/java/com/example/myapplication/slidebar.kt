@@ -2,7 +2,9 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -39,6 +41,19 @@ class slidebar : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val name = intent.getStringExtra("USER_NAME")
+        val email = intent.getStringExtra("USER_EMAIL")
+
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val headerView: View = navigationView.getHeaderView(0)
+        val headerTitle = headerView.findViewById<TextView>(R.id.correo_nav_header)
+        val headerSubtitle = headerView.findViewById<TextView>(R.id.nombre_nav_header)
+
+        // Establecer el texto en los TextViews del encabezado
+        headerTitle.text = name
+        headerSubtitle.text = email
+
 
 
         val lunes = findViewById<Button>(R.id.Lunes)

@@ -43,11 +43,18 @@ class iniciar_sesion : AppCompatActivity() {
                     // Inicio de sesión exitoso
                     val loginResponse = response.body()
                     Log.d("LoginResponse", "Response: $loginResponse") // Loguear el loginResponse
-                    startActivity(Intent(this@iniciar_sesion, slidebar::class.java))
+                    val name = loginResponse?.name
+                    val email = loginResponse?.email
+
+                    // Pasar los valores a la siguiente actividad
+                    val intent = Intent(this@iniciar_sesion, slidebar::class.java)
+                    intent.putExtra("USER_NAME", name)
+                    intent.putExtra("USER_EMAIL", email)
+                    startActivity(intent)
                 } else {
                     // El servidor retornó un error
                     // Puedes obtener más detalles con response.errorBody() y response.code()
-                    mostrarAlertDialog("Error", "Inicio de sesión fallido.")
+                    mostrarAlertDialog("Error", "Correo o Contraseña son Incorrectos.")
                 }
             }
         }
