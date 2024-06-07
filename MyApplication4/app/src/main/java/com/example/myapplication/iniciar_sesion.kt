@@ -30,6 +30,9 @@ class iniciar_sesion : AppCompatActivity() {
                 iniciarSesion(loginRequest)
             } else {
                 mostrarAlertDialog("Error", "Debe completar todos los campos.")
+                {
+
+                }
             }
         }
     }
@@ -50,21 +53,29 @@ class iniciar_sesion : AppCompatActivity() {
                     val intent = Intent(this@iniciar_sesion, slidebar::class.java)
                     intent.putExtra("USER_NAME", name)
                     intent.putExtra("USER_EMAIL", email)
-                    startActivity(intent)
+                    mostrarAlertDialog("Inicios de sesion correcta", "Bienvenido "+name.toString())
+                    {
+                        startActivity(intent)
+                    }
                 } else {
                     // El servidor retornó un error
                     // Puedes obtener más detalles con response.errorBody() y response.code()
                     mostrarAlertDialog("Error", "Correo o Contraseña son Incorrectos.")
+                    {
+
+                    }
                 }
             }
         }
     }
 
-    private fun mostrarAlertDialog(title: String, message: String) {
+    private fun mostrarAlertDialog(title: String, message: String, onAccept: () -> Unit)
+    {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
             .setPositiveButton("Aceptar") { dialog, id ->
+                onAccept()
                 // Acción al hacer clic en Aceptar en el AlertDialog
             }
             .show()

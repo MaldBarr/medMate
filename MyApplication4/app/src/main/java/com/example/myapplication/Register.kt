@@ -32,22 +32,37 @@ class Register : AppCompatActivity() {
         val boton_registro = findViewById<Button>(R.id.registerBtn)
         boton_registro.setOnClickListener {
             val email = findViewById<EditText>(R.id.editTextTextEmailAddress).text.toString()
+            Log.d("Register", "Email:"+email)
             val name = findViewById<EditText>(R.id.editTextText).text.toString()
             val contrasenia = findViewById<EditText>(R.id.editTextTextPassword).text.toString()
+            val terminos_condiciones = findViewById<CheckBox>(R.id.checkBox)
             if (email.isEmpty() || name.isEmpty() || contrasenia.isEmpty()) {
                 mostrarAlertDialog("Error", "Por favor completa todos los campos.")
-            }
+                {
 
-            val terminos_condiciones = findViewById<CheckBox>(R.id.checkBox)
-            if (!terminos_condiciones.isChecked) {
+                }
+            } else if (!isEmailValid(email)) {
+                mostrarAlertDialog("Error", "Por favor ingresa un correo electrónico válido.")
+                {
+
+                }
+            } else if (contrasenia.length < 6) {
+                mostrarAlertDialog("Error", "La contraseña debe tener al menos 6 caracteres.")
+                {
+
+                }
+            } else if (!terminos_condiciones.isChecked) {
                 mostrarAlertDialog("Error", "Debes aceptar los términos y condiciones para continuar.")
+                {
+
+                }
+            } else {
+                // Crear el objeto RegisterRequest para enviar al servidor
+                val registerRequest = RegisterRequest(name, email, contrasenia)
+
+                // Llamar a la función para registrar
+                registrar(registerRequest)
             }
-
-            // Crear el objeto RegisterRequest para enviar al servidor
-            val registerRequest = RegisterRequest(name, email, contrasenia)
-
-            // Llamar a la función para registrar
-            registrar(registerRequest)
         }
     }
 
@@ -61,22 +76,34 @@ class Register : AppCompatActivity() {
                     val loginResponse = response.body()
                     Log.d("LoginResponse", "Response: $loginResponse") // Loguear el loginResponse
                     val intent = Intent(this@Register, MainActivity::class.java)
-                    startActivity(intent)
+                    mostrarAlertDialog("Gracias Por Registrarte","Por favor inicia sesion con tu correo:"+registerRequest.email+" y contraseña: "+registerRequest.contrasenia)
+                    {
+                        startActivity(intent)
+                    }
                 } else {
                     // El servidor retornó un error
                     // Puedes obtener más detalles con response.errorBody() y response.code()
                     mostrarAlertDialog("Error", "Correo o Contraseña son Incorrectos.")
+                    {
+                        // Acción al hacer clic en Aceptar en el AlertDialog
+                    }
                 }
             }
         }
     }
 
-    private fun mostrarAlertDialog(title: String, message: String) {
+    private fun isEmailValid(email: String): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return email.matches(emailPattern.toRegex())
+    }
+
+    private fun mostrarAlertDialog(title: String, message: String, onAccept: () -> Unit) {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
             .setPositiveButton("Aceptar") { dialog, id ->
                 // Acción al hacer clic en Aceptar en el AlertDialog
+                onAccept()
             }
             .show()
     }

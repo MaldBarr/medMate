@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -23,6 +24,7 @@ class slidebar : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mostrarAlertDialog("Bienvenido", "Bienvenido a la aplicación de Medi-Mate")
 
         binding = ActivitySlidebarBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -96,6 +98,16 @@ class slidebar : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_slidebar)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun mostrarAlertDialog(title: String, message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("Aceptar") { dialog, id ->
+                // Acción al hacer clic en Aceptar en el AlertDialog
+            }
+            .show()
     }
 
 }
