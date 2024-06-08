@@ -1,9 +1,12 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
@@ -15,6 +18,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivitySlidebarBinding
 
 class slidebar : AppCompatActivity() {
@@ -55,6 +60,16 @@ class slidebar : AppCompatActivity() {
         // Establecer el texto en los TextViews del encabezado
         headerTitle.text = name
         headerSubtitle.text = email
+
+
+        //poner items en el sidelist en Calenadario
+        val home = findViewById<FrameLayout>(R.id.home)
+        val listadoMedicamentos = home.findViewById<RecyclerView>(R.id.listadoMedicamentos)
+        val myDataset = listOf("Medicamento 1", "Medicamento 2", "Medicamento 3")
+        listadoMedicamentos.layoutManager = LinearLayoutManager(this)
+        listadoMedicamentos.adapter = MyAdapter(myDataset)
+
+
 
 
 
@@ -100,6 +115,25 @@ class slidebar : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+
+    class MyAdapter(private val myDataset: List<String>) :
+        RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
+        class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item, parent, false)
+            return MyViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+            val textView = holder.view.findViewById<TextView>(R.id.nameTextView)
+            textView.text = myDataset[position]
+        }
+
+        override fun getItemCount() = myDataset.size
+    }
     private fun mostrarAlertDialog(title: String, message: String) {
         AlertDialog.Builder(this)
             .setTitle(title)
