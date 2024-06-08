@@ -47,7 +47,6 @@ class MedStep3Fragment : Fragment() {
 
     private fun saveSelectedFrequency(frequency: String?) {
         // Aquí se guardará la selección en la base de datos cuando esté lista
-        // Por ahora, solo mostramos el valor seleccionado en la consola para confirmar
         println("Frecuencia seleccionada: $frequency")
     }
 
