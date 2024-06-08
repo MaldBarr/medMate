@@ -23,9 +23,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="L"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -33,9 +36,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="M"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -43,9 +49,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="M"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -53,9 +62,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="J"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -63,9 +75,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="V"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -73,9 +88,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="S"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -83,9 +101,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="103dp"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
+                android:stateListAnimator="@anim/nav_default_enter_anim"
                 android:text="D"
+                android:textColor="#FFFFFF"
                 app:cornerRadius="0dp" />
 
         </LinearLayout>

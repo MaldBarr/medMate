@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -70,9 +69,6 @@ class slidebar : AppCompatActivity() {
         listadoMedicamentos.adapter = MyAdapter(myDataset)
 
 
-
-
-
         val lunes = findViewById<Button>(R.id.Lunes)
         val martes = findViewById<Button>(R.id.Martes)
         val miercoles = findViewById<Button>(R.id.Miercoles)
@@ -102,6 +98,8 @@ class slidebar : AppCompatActivity() {
         domingo.setOnClickListener {
 
         }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -129,6 +127,8 @@ class slidebar : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
             val textView = holder.view.findViewById<TextView>(R.id.nameTextView)
+            val botonEditar = holder.view.findViewById<Button>(R.id.editButton)
+            val botonEliminar = holder.view.findViewById<Button>(R.id.deleteButton)
             textView.text = myDataset[position]
         }
 
