@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/usuario', router);
+app.use('/formato_medicina', router);
 /*app.use('/', (req, res) => {
     res.send('Hello World');
 }
