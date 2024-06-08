@@ -16,13 +16,16 @@ public class AlarmReceiver : BroadcastReceiver() {
 
     private fun showNotification(context: Context?) {
         val notificationIntent = Intent(context, MainActivity::class.java)
+        notificationIntent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0)
 
         val notification = NotificationCompat.Builder(context!!, "channelId")
             .setContentTitle("¡Hora de tomar tu medicamento!")
             .setContentText("Recuerda tomar tu medicamento.")
-            .setSmallIcon(R.drawable.ic_alarm)
+            .setSmallIcon(R.drawable.logo)
             .setContentIntent(pendingIntent)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
             .build()
 
