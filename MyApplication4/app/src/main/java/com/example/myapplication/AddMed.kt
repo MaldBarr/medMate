@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +42,7 @@ class AddMed : AppCompatActivity() {
                 viewPager.currentItem = currentItem + 1
                 progressBar.progress = currentItem + 2
             } else {
-                // Aquí puedes agregar la lógica para finalizar la entrada de datos
+                intent = Intent(this, Guardando_Medicamento::class.java)
                 finish()
             }
         }

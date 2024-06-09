@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.medstep
 
+import SharedViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentMedStep2Binding
 
@@ -43,12 +45,17 @@ class MedStep2Fragment : Fragment() {
             // Aquí es donde identificamos el dato para guardarlo en la base de datos
             saveSelectedFormat(selectedFormat)
         }
+
     }
 
+
     private fun saveSelectedFormat(format: String?) {
-        // Aquí se guardará la selección en la base de datos cuando esté lista
-        // Por ahora, solo mostramos el valor seleccionado en la consola para confirmar
-        println("Formato seleccionado: $format")
+        if(format != null && format.isNotEmpty()) {
+            val viewModel: SharedViewModel by activityViewModels()
+            viewModel.setFormatoMedicamento(format)
+        } else {
+            // Handle the case where format is null or empty
+        }
     }
 
     override fun onDestroyView() {

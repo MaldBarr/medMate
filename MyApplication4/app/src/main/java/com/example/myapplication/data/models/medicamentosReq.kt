@@ -1,9 +1,10 @@
 package com.example.myapplication.data.models
 
 
-data class FormatoMedicinaResp(
+data class medicamentosRes(
     val id: Int,
-    val formato: String,
+    val medicamento: String,
     val createdAt: String,
     val updatedAt: String
 )
+

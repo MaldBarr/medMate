@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.use('/usuario', router);
 app.use('/formato_medicina', router);
+app.use('/medicamentos', router);
 /*app.use('/', (req, res) => {
     res.send('Hello World');
 }

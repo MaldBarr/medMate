@@ -1,6 +1,7 @@
 // MedStep4Fragment.kt
 package com.example.myapplication.ui.medstep
 
+import SharedViewModel
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TimePicker
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.myapplication.AlarmReceiver
 import java.util.*
 
@@ -56,5 +58,10 @@ class MedStep4Fragment : Fragment() {
 
         // Establecer la alarma con el tiempo seleccionado
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+
+        // Guardar la hora seleccionada en el SharedViewModel
+        val selectedTime = "$hourOfDay:$minute"
+        val viewModel: SharedViewModel by activityViewModels()
+        viewModel.setHora(selectedTime)
     }
 }
