@@ -1,11 +1,23 @@
 package com.example.myapplication.data.interfaz
 
-import com.example.myapplication.data.models.FormatoMedicinaResp
+import com.example.myapplication.data.models.HoraReq
+import com.example.myapplication.data.models.HoraRes
 import com.example.myapplication.data.models.LoginRequest
 import com.example.myapplication.data.models.LoginResponse
+import com.example.myapplication.data.models.MedicamentosbyIdReq
+import com.example.myapplication.data.models.MedicamentosbyIdRes
 import com.example.myapplication.data.models.RegisterRequest
 import com.example.myapplication.data.models.RegisterResponse
+import com.example.myapplication.data.models.formatoReq
+import com.example.myapplication.data.models.formatoRes
+import com.example.myapplication.data.models.frecuenciaReq
+import com.example.myapplication.data.models.frecuenciaRes
+import com.example.myapplication.data.models.medicamentosReq
 import com.example.myapplication.data.models.medicamentosRes
+import com.example.myapplication.data.models.recordatorioReq
+import com.example.myapplication.data.models.recordatorioRes
+import com.example.myapplication.data.models.recordatorioUsuarioReq
+import com.example.myapplication.data.models.recordatorioUsuarioRes
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,9 +29,24 @@ interface ApiService {
     @POST("usuario/registerUsuario")
     suspend fun register(@Body request: RegisterRequest): Response<RegisterResponse>
 
-    @GET("formato_medicina/getFormato_medicinas")
-    suspend fun getFormatoMedicina(): Response<List<FormatoMedicinaResp>>
+    @POST("medicamentos/obtenerIdMedicamento")
+    suspend fun idMedicamento(@Body request: medicamentosReq): Response<medicamentosRes>
 
-    @GET("medicamentos/getMedicamentos")
-    suspend fun getMedicamentos(): Response<List<medicamentosRes>>
+    @POST("formato_medicina/obtenerIdFormato_medicina")
+    suspend fun idformato(@Body request: formatoReq): Response<formatoRes>
+
+    @POST("frecuencias/obtenerIdFrecuencia")
+    suspend fun idFrecuencia(@Body request: frecuenciaReq): Response<frecuenciaRes>
+
+    @POST("horas/obtenerIdHora")
+    suspend fun idHora(@Body request: HoraReq): Response<HoraRes>
+
+    @POST("recordatorio/createRecordatorio")
+    suspend fun createRecordatorio(@Body request: recordatorioReq): Response<recordatorioRes>
+
+    @POST("recordatorio/getRecordatoriosByUserId")
+    suspend fun getRecordatoriosByUserId(@Body request: recordatorioUsuarioReq): Response<List<recordatorioUsuarioRes>>
+
+    @POST("medicamentos/obtenerNombreMedicamentoPorId")
+    suspend fun getNombreMedicamentoById(@Body request: MedicamentosbyIdReq): Response<MedicamentosbyIdRes>
 }

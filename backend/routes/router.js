@@ -1,7 +1,17 @@
 import express from 'express';
+//Usuario
 import {iniciarSesion,registerUsuario} from '../controller/usercontroller.js';
-import { getFormato_medicinas } from '../controller/formato_medicinaController.js';
-import { getMedicamentos } from '../controller/medicamentosController.js';
+//Formato
+import { obtenerIdFormato_medicina } from '../controller/formato_medicinaController.js';
+//Medicamentos
+import { getMedicamentos,obtenerIdMedicamento,obtenerNombreMedicamentoPorId } from '../controller/medicamentosController.js';
+//Frecuencias
+import { obtenerIdFrecuencia } from '../controller/frecuenciasController.js';
+//horas
+import { obtenerIdHora } from '../controller/horasController.js';
+
+import { createRecordatorio, getRecordatoriosByUserId } from '../controller/recordatorioController.js';
+
 
 const router = express.Router();
 
@@ -11,7 +21,18 @@ const router = express.Router();
 
 router.post('/iniciarSesion', iniciarSesion);
 router.post('/registerUsuario', registerUsuario);
-router.get('/getFormato_medicinas', getFormato_medicinas);
 router.get('/getMedicamentos', getMedicamentos);
+router.post('/createRecordatorio', createRecordatorio);
+router.post('/getRecordatoriosByUserId', getRecordatoriosByUserId);
+
+
+//obetener ids
+router.post('/obtenerIdMedicamento', obtenerIdMedicamento);
+router.post('/obtenerIdFormato_medicina', obtenerIdFormato_medicina);
+router.post('/obtenerIdFrecuencia', obtenerIdFrecuencia);
+router.post('/obtenerIdHora', obtenerIdHora);
+
+//obtener nombre
+router.post('/obtenerNombreMedicamentoPorId', obtenerNombreMedicamentoPorId);
 
 export default router;

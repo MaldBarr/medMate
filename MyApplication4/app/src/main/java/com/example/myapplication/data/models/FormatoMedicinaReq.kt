@@ -1,9 +1,9 @@
 package com.example.myapplication.data.models
 
 
-data class FormatoMedicinaResp(
+data class formatoReq(
+    val formato: String?,
+)
+data class formatoRes(
     val id: Int,
-    val formato: String,
-    val createdAt: String,
-    val updatedAt: String
 )

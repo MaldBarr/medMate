@@ -10,3 +10,34 @@ export const getMedicamentos = async (req, res) => {
         });
     }
 }
+
+export const obtenerIdMedicamento = async (req, res) => {
+    try {
+        const medicamento = await medicamentos.findOne({
+            where: {
+                medicamento: req.body.medicamento
+            }
+        });
+        res.json({id:medicamento.id});
+    } catch (error) {
+        res.status(500).json({
+            message: "Error en el servidor"
+        });
+    }
+}
+
+
+export const obtenerNombreMedicamentoPorId = async (req, res) => {
+    try {
+        const medicamento = await medicamentos.findOne({
+            where: {
+                id: req.body.id
+            }
+        });
+        res.json({ nombre: medicamento.medicamento });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error en el servidor"
+        });
+    }
+}

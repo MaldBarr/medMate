@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class iniciar_sesion : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_iniciar_sesion)
@@ -48,11 +48,19 @@ class iniciar_sesion : AppCompatActivity() {
                     Log.d("LoginResponse", "Response: $loginResponse") // Loguear el loginResponse
                     val name = loginResponse?.name
                     val email = loginResponse?.email
+                    val id = loginResponse?.id
+                    Log.d("LoginResponse", "id: $id") // Loguear el name
 
                     // Pasar los valores a la siguiente actividad
                     val intent = Intent(this@iniciar_sesion, slidebar::class.java)
                     intent.putExtra("USER_NAME", name)
                     intent.putExtra("USER_EMAIL", email)
+
+                    val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("USER_ID", id.toString())
+                    editor.apply()
+
                     mostrarAlertDialog("Inicios de sesion correcta", "Bienvenido "+name.toString())
                     {
                         startActivity(intent)
@@ -68,6 +76,8 @@ class iniciar_sesion : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun mostrarAlertDialog(title: String, message: String, onAccept: () -> Unit)
     {

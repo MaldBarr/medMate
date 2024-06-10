@@ -1,6 +1,6 @@
 package com.example.myapplication.ui.medstep
 
-import SharedViewModel
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,21 +42,16 @@ class MedStep2Fragment : Fragment() {
             val selectedFormat = selectedRadioButton?.text?.toString()
             // Muestra un mensaje de confirmación para probar la selección
             Toast.makeText(context, "Seleccionaste: $selectedFormat", Toast.LENGTH_SHORT).show()
-            // Aquí es donde identificamos el dato para guardarlo en la base de datos
-            saveSelectedFormat(selectedFormat)
+            // Guardar el selectedFormat en SharedPreferences
+            val sharedPref = requireActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.putString("SELECTED_FORMAT", selectedFormat)
+            editor.apply()
         }
 
     }
 
 
-    private fun saveSelectedFormat(format: String?) {
-        if(format != null && format.isNotEmpty()) {
-            val viewModel: SharedViewModel by activityViewModels()
-            viewModel.setFormatoMedicamento(format)
-        } else {
-            // Handle the case where format is null or empty
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

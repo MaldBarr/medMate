@@ -51,6 +51,9 @@ class slidebar : AppCompatActivity() {
         val name = intent.getStringExtra("USER_NAME")
         val email = intent.getStringExtra("USER_EMAIL")
 
+
+
+
         val navigationView = findViewById<NavigationView>(R.id.nav_view)
         val headerView: View = navigationView.getHeaderView(0)
         val headerTitle = headerView.findViewById<TextView>(R.id.correo_nav_header)
@@ -61,12 +64,6 @@ class slidebar : AppCompatActivity() {
         headerSubtitle.text = email
 
 
-        //poner items en el sidelist en Calenadario
-        val home = findViewById<FrameLayout>(R.id.home)
-        val listadoMedicamentos = home.findViewById<RecyclerView>(R.id.listadoMedicamentos)
-        val myDataset = listOf("Medicamento 1", "Medicamento 2", "Medicamento 3")
-        listadoMedicamentos.layoutManager = LinearLayoutManager(this)
-        listadoMedicamentos.adapter = MyAdapter(myDataset)
 
 
         val lunes = findViewById<Button>(R.id.Lunes)
@@ -114,26 +111,7 @@ class slidebar : AppCompatActivity() {
     }
 
 
-    class MyAdapter(private val myDataset: List<String>) :
-        RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-        class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item, parent, false)
-            return MyViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            val textView = holder.view.findViewById<TextView>(R.id.nameTextView)
-            val botonEditar = holder.view.findViewById<Button>(R.id.editButton)
-            val botonEliminar = holder.view.findViewById<Button>(R.id.deleteButton)
-            textView.text = myDataset[position]
-        }
-
-        override fun getItemCount() = myDataset.size
-    }
     private fun mostrarAlertDialog(title: String, message: String) {
         AlertDialog.Builder(this)
             .setTitle(title)

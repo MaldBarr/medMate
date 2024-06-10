@@ -1,13 +1,13 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
 
-const Formato_medicina = db.define('formato_medicina', {
+const frecuencias = db.define('frecuencias', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    formato: {
+    frecuencia: {
         type: DataTypes.STRING,
     },
     createdAt: {
@@ -17,7 +17,7 @@ const Formato_medicina = db.define('formato_medicina', {
         type: DataTypes.DATE,
     }
     
-},{ tableName: 'formato_medicina', // Reemplaza con el nombre real de tu tabla
+},{ tableName: 'frecuencias', // Reemplaza con el nombre real de tu tabla
 });
 
-export default Formato_medicina;
+export default frecuencias;

@@ -42,7 +42,6 @@ class AddMed : AppCompatActivity() {
                 viewPager.currentItem = currentItem + 1
                 progressBar.progress = currentItem + 2
             } else {
-                intent = Intent(this, Guardando_Medicamento::class.java)
                 finish()
             }
         }

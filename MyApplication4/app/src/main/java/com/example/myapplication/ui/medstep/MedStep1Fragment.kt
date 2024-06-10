@@ -1,6 +1,6 @@
 package com.example.myapplication.ui.medstep
 
-import SharedViewModel
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,8 +38,11 @@ class MedStep1Fragment : Fragment() {
                 mostrarAlertDialog("Error", "Debes seleccionar un medicamento", {})
             }
             else{
-                val viewModel: SharedViewModel by activityViewModels()
-                viewModel.setMedicamento(medicamentoSeleccionado)
+                // Guardar el medicamentoSeleccionado en SharedPreferences
+                val sharedPref = requireActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("MEDICAMENTO_SELECCIONADO", medicamentoSeleccionado)
+                editor.apply()
             }
         }
     }
