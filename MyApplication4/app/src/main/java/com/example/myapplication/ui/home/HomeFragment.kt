@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.myapplication.AddMed
+import com.example.myapplication.HorasMedicas
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -57,7 +58,7 @@ class HomeFragment : Fragment() {
             when (which) {
                 0 -> navigateToAddMedicamento()
                 1 -> {
-                    // Navegar al fragmento de agregar hora médica (esto puede ser implementado más tarde)
+                     navigateToHorasMedicas()
                 }
             }
         }
@@ -66,6 +67,11 @@ class HomeFragment : Fragment() {
 
     private fun navigateToAddMedicamento() {
         val intent = Intent(activity, AddMed::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToHorasMedicas() {
+        val intent = Intent(activity, HorasMedicas::class.java)
         startActivity(intent)
     }
 

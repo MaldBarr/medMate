@@ -1,15 +1,15 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import java.util.Date
 
-class HorasMedicas : AppCompatActivity(){
+class HorasMedicas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_reminder)
@@ -25,20 +25,17 @@ class HorasMedicas : AppCompatActivity(){
                 // Agregar la hora médica a la base de datos
                 TODO()
             } else {
-                mostrarAlertDialog("Error", "Debe completar el campo de Nombre del tratamiento.")
-                {
-                }
+                mostrarAlertDialog("Error", "Debe completar el campo de Nombre del tratamiento.") {}
             }
         }
 
         val botonCancelar = findViewById<Button>(R.id.button5)
         botonCancelar.setOnClickListener {
-            finish() // Cierra y vuelve a la anterior, se supone
+            finish() // Cierra y vuelve a la anterior
         }
     }
 
-    private fun mostrarAlertDialog(title: String, message: String, onAccept: () -> Unit)
-    {
+    private fun mostrarAlertDialog(title: String, message: String, onAccept: () -> Unit) {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message)
