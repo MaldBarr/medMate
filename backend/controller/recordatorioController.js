@@ -27,14 +27,16 @@ export const createRecordatorio = async (req, res) => {
 
 export const updateRecordatorio = async (req, res) => {
     try {
-        const recordatorio = await Recordatorio.findByPk(req.params.id);
+        const { id } = req.body;
+        const recordatorio = await Recordatorio.findByPk(id);
         if (!recordatorio) {
             return res.status(404).json({
                 message: "Error",
                 error: "Recordatorio no encontrado"
             });
         }
-        await recordatorio.update(req.body);
+        const { id_medicamento, id_formato, id_frecuencia } = req.body;
+        await recordatorio.update({ id_medicamento, id_formato, id_frecuencia });
         res.json(recordatorio);
     } catch (error) {
         res.status(500).json({
@@ -46,7 +48,7 @@ export const updateRecordatorio = async (req, res) => {
 
 export const deleteRecordatorio = async (req, res) => {
     try {
-        const recordatorio = await Recordatorio.findByPk(req.params.id);
+        const recordatorio = await Recordatorio.findByPk(req.body.id);
         if (!recordatorio) {
             return res.status(404).json({
                 message: "Error",

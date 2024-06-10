@@ -1,18 +1,24 @@
 package com.example.myapplication.ui.calendar
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Eliminar_Medicamento
 import com.example.myapplication.R
 import com.example.myapplication.data.RetrofitInstance
 import com.example.myapplication.data.models.MedicamentosbyIdReq
 import com.example.myapplication.data.models.recordatorioUsuarioReq
+import com.example.myapplication.data.models.recordatorioUsuarioRes
 import com.example.myapplication.databinding.FragmentCalendarBinding
+import com.example.myapplication.ui.editarMedicamento.EditarMedicamentoPt1
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,7 +47,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
     }
 
     private fun setupRecyclerView() {
-        val myDataset = mutableListOf<String>()
+        val myDataset = mutableListOf<recordatorioUsuarioRes>()
         val adapter = MyAdapter(myDataset)
         binding.listadoMedicamentos.layoutManager = LinearLayoutManager(context)
         binding.listadoMedicamentos.adapter = adapter
@@ -62,7 +68,8 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
                             val medicamentoNombre = responseMedicamento.body()?.nombre
                             if (medicamentoNombre != null) {
                                 println("Adding $medicamentoNombre to dataset") // Debugging line
-                                myDataset.add(medicamentoNombre)
+                                recordatorio.id_medicamento = medicamentoNombre
+                                myDataset.add(recordatorio)
                             }
                         }
                     }
@@ -73,7 +80,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         }
     }
 
-    class MyAdapter(private val myDataset: List<String>) :
+    class MyAdapter(private val myDataset: List<recordatorioUsuarioRes>) :
         RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
         class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -85,8 +92,23 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         }
 
         override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-            val textView = holder.view.findViewById<TextView>(R.id.nameTextView) // Asegúrate de que 'textView' es el id correcto en tu item.xml
-            textView.text = myDataset[position]
+            val textView = holder.view.findViewById<TextView>(R.id.nameTextView)
+            textView.text = myDataset[position].id_medicamento
+
+            val editButton = holder.view.findViewById<Button>(R.id.editButton)
+            editButton.setOnClickListener {
+                val context = holder.view.context
+                val intent = Intent(context, EditarMedicamentoPt1::class.java)
+                intent.putExtra("id_recordatorio", myDataset[position].id)
+                context.startActivity(intent)
+            }
+            val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)
+            deleteButton.setOnClickListener {
+                val context = holder.view.context
+                val intent = Intent(context, Eliminar_Medicamento::class.java)
+                intent.putExtra("id_recordatorio", myDataset[position].id.toString())
+                context.startActivity(intent)
+            }
         }
 
         override fun getItemCount() = myDataset.size

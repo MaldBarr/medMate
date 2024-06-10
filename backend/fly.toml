@@ -1,12 +1,15 @@
-# fly.toml app configuration file generated for backendmedimate2 on 2024-06-03T19:47:24-04:00
+# fly.toml app configuration file generated for backendmedimate on 2024-06-10T18:21:57-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "backendmedimate"
-primary_region = "scl"
+app = 'backendmedimate'
+primary_region = 'scl'
 
 [build]
+
+[processes]
+  web = 'node index.js'
 
 [http_service]
   internal_port = 3000
@@ -14,12 +17,9 @@ primary_region = "scl"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["web"]
-
-[processes]
-  web = "node index.js"
+  processes = ['web']
 
 [[vm]]
-  memory = "1gb"
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1

@@ -1,8 +1,10 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -66,6 +68,12 @@ class Guardando_Medicamento : AppCompatActivity() {
         // Obtener el selectedFrequency de SharedPreferences
         val selectedFrequency = sharedPref.getString("SELECTED_FREQUENCY", null)
 
+        // Cambiar el texto del TextView a "Guardando Medicamento"
+        runOnUiThread {
+            val textView = findViewById<TextView>(R.id.guardando_guardado)
+            textView.text = "Guardando Medicamento"
+        }
+
         // Guardar el medicamento
         CoroutineScope(Dispatchers.IO).launch {
             // Obtener las ID de medicamentoSeleccionado, selectedFormat y selectedFrequency
@@ -94,6 +102,19 @@ class Guardando_Medicamento : AppCompatActivity() {
                 if (response.isSuccessful) {
                     // El recordatorio se creó exitosamente
                     Log.d("SharedViewModel", "Recordatorio creado exitosamente")
+
+                    // Cambiar el texto del TextView a "Medicamento Guardado"
+                    runOnUiThread {
+                        val textView = findViewById<TextView>(R.id.guardando_guardado)
+                        textView.text = "Medicamento Guardado"
+                    }
+
+                    // Hacer una pausa de 2 segundos
+                    kotlinx.coroutines.delay(2000)
+
+                    // Redirigir a la actividad Slidebar
+                    val intent = Intent(this@Guardando_Medicamento, slidebar::class.java)
+                    startActivity(intent)
                 } else {
                     // Hubo un error al crear el recordatorio
                     Log.d("SharedViewModel", "Error al crear el recordatorio: ${response.errorBody()}")

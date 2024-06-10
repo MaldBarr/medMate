@@ -14,12 +14,17 @@ import com.example.myapplication.data.models.frecuenciaReq
 import com.example.myapplication.data.models.frecuenciaRes
 import com.example.myapplication.data.models.medicamentosReq
 import com.example.myapplication.data.models.medicamentosRes
+import com.example.myapplication.data.models.recordatorioDeleteReq
+import com.example.myapplication.data.models.recordatorioDeleteRes
 import com.example.myapplication.data.models.recordatorioReq
 import com.example.myapplication.data.models.recordatorioRes
+import com.example.myapplication.data.models.recordatorioUpatedReq
+import com.example.myapplication.data.models.recordatorioUpdatedRes
 import com.example.myapplication.data.models.recordatorioUsuarioReq
 import com.example.myapplication.data.models.recordatorioUsuarioRes
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -49,4 +54,12 @@ interface ApiService {
 
     @POST("medicamentos/obtenerNombreMedicamentoPorId")
     suspend fun getNombreMedicamentoById(@Body request: MedicamentosbyIdReq): Response<MedicamentosbyIdRes>
+
+    @POST("recordatorio/updateRecordatorio")
+    suspend fun updateRecordatorio(@Body request: recordatorioUpatedReq): Response<recordatorioUpdatedRes>
+
+    @POST("recordatorio/deleteRecordatorio")
+    suspend fun recordatorioDeleteReq(@Body request: recordatorioDeleteReq): Response<recordatorioDeleteRes>
+
+
 }

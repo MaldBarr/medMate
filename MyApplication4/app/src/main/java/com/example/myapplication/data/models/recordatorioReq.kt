@@ -23,7 +23,25 @@ data class recordatorioUsuarioReq(
 )
 
 data class recordatorioUsuarioRes(
-    val id_recordatorio: String,
+    val id: Int,
+    val id_usuario: String,
+    var id_medicamento: String,
+    val id_formato: String,
+    val id_frecuencia: String,
+    val id_hora: String,
+    val created_at: String,
+    val updated_at: String,
+)
+
+data class recordatorioUpatedReq(
+    val id: String,
+    val id_medicamento: String,
+    val id_formato: String,
+    val id_frecuencia: String,
+)
+
+data class recordatorioUpdatedRes(
+    val id: Int,
     val id_usuario: String,
     val id_medicamento: String,
     val id_formato: String,
@@ -31,6 +49,14 @@ data class recordatorioUsuarioRes(
     val id_hora: String,
     val created_at: String,
     val updated_at: String,
-) {
+)
 
-}
+
+
+data class recordatorioDeleteReq(
+    val id: Int,
+)
+
+data class recordatorioDeleteRes(
+    val message: String,
+)
