@@ -50,8 +50,8 @@ class bottomNav : AppCompatActivity() {
                     navigateToAddMedicamento()
                 }
                 1 -> {
-                    // Navegar al fragmento de agregar hora médica (esto puede ser implementado más tarde)
-                    // navigateToAddHoraMedica()
+                    // Navegar al fragmento de agregar hora médica
+                    navigateToAddHoraMedica()
                 }
             }
         }
@@ -60,6 +60,10 @@ class bottomNav : AppCompatActivity() {
 
     private fun navigateToAddMedicamento() {
         val intent = Intent(this, AddMed::class.java)
+        startActivity(intent)
+    }
+    private fun navigateToAddHoraMedica(){
+        val intent = Intent(this, HorasMedicas::class.java)
         startActivity(intent)
     }
 }
