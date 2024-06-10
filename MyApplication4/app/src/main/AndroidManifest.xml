@@ -25,6 +25,10 @@
         <receiver android:name=".AlarmReceiver" />
 
         <activity
+            android:name=".HorasMedicas"
+            android:exported="false" />
+
+        <activity
             android:name=".AddMedPagerAdapter"
             android:exported="false" />
         <activity
