@@ -7,3 +7,4 @@ data class frecuenciaReq(
 data class frecuenciaRes(
     val id: Int,
 )
+

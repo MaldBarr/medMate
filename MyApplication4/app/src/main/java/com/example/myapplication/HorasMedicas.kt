@@ -29,7 +29,7 @@ class HorasMedicas : AppCompatActivity() {
 
             if (Tratamiento.isNotEmpty()) {
                 // Agregar la hora médica a la base de datos
-                cargarRecordatorio(Tratamiento, Fecha, Hora, Minuto)
+                //cargarRecordatorio(Tratamiento, Fecha, Hora, Minuto)
             } else {
                 mostrarAlertDialog("Error", "Debe completar el campo de Nombre del tratamiento.") {}
             }
@@ -52,7 +52,7 @@ class HorasMedicas : AppCompatActivity() {
             .show()
     }
 
-    private fun cargarRecordatorio(String tratamiento: String, Date fecha: Date, Int hora: Int, Int minuto: Int) {
+    /*private fun cargarRecordatorio(String tratamiento: String, Date fecha: Date, Int hora: Int, Int minuto: Int) {
         // Cargar el recordatorio a la base de datos
         // Obtener una instancia de SharedPreferences
         val sharedPref = this.getSharedPreferences("MyPref", Context.MODE_PRIVATE)
@@ -63,5 +63,5 @@ class HorasMedicas : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch{
             // TODO: Implementar la carga del recordatorio
         }
-    }
+    }*/
 }

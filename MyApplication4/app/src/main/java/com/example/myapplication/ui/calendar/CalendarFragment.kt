@@ -2,7 +2,6 @@ package com.example.myapplication.ui.calendar
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -99,7 +98,10 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             editButton.setOnClickListener {
                 val context = holder.view.context
                 val intent = Intent(context, EditarMedicamentoPt1::class.java)
-                intent.putExtra("id_recordatorio", myDataset[position].id)
+                intent.putExtra("id_recordatorio", myDataset[position].id.toString())
+                intent.putExtra("id_medicamento", myDataset[position].id_medicamento)
+                intent.putExtra("id_formato", myDataset[position].id_formato)
+                intent.putExtra("id_frecuencia", myDataset[position].id_frecuencia)
                 context.startActivity(intent)
             }
             val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)

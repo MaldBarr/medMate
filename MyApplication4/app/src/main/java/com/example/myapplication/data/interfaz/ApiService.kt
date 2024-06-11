@@ -24,8 +24,6 @@ import com.example.myapplication.data.models.recordatorioUsuarioReq
 import com.example.myapplication.data.models.recordatorioUsuarioRes
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -60,6 +58,7 @@ interface ApiService {
 
     @POST("recordatorio/deleteRecordatorio")
     suspend fun recordatorioDeleteReq(@Body request: recordatorioDeleteReq): Response<recordatorioDeleteRes>
+
 
 
 }

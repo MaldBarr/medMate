@@ -24,12 +24,14 @@
 
     <RadioGroup
         android:id="@+id/radioEdit"
-        android:layout_width="408dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="426dp"
+        android:layout_width="413dp"
+        android:layout_height="470dp"
+        android:layout_marginTop="11dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnEditSiguiente2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-3dp" />
 
     <Button
         android:id="@+id/btnEditSiguiente2"

@@ -1,5 +1,7 @@
 package com.example.myapplication.data.models
 
+import retrofit2.Response
+
 data class recordatorioReq(
     val id_usuario: String?,
     val id_medicamento: Int?,
@@ -34,14 +36,14 @@ data class recordatorioUsuarioRes(
 )
 
 data class recordatorioUpatedReq(
-    val id: String,
-    val id_medicamento: String,
-    val id_formato: String,
-    val id_frecuencia: String,
+    val id: String?,
+    val id_medicamento: Response<medicamentosRes>,
+    val id_formato: Response<formatoRes>,
+    val id_frecuencia: Response<frecuenciaRes>,
 )
 
 data class recordatorioUpdatedRes(
-    val id: Int,
+    val id: Int?,
     val id_usuario: String,
     val id_medicamento: String,
     val id_formato: String,

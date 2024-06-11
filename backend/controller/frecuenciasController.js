@@ -14,3 +14,18 @@ export const obtenerIdFrecuencia = async (req, res) => {
         });
     }
 }
+
+export const obtenerNombreFrecuencia = async (req, res) => {
+    try {
+        const frecuencia = await frecuencias.findOne({
+            where: {
+                id: req.body.id
+            }
+        });
+        res.json({nombre: frecuencia.frecuencia});
+    } catch (error) {
+        res.status(500).json({
+            message: "Error en el servidor"
+        });
+    }
+}

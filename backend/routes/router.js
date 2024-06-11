@@ -2,11 +2,11 @@ import express from 'express';
 //Usuario
 import {iniciarSesion,registerUsuario} from '../controller/usercontroller.js';
 //Formato
-import { obtenerIdFormato_medicina } from '../controller/formato_medicinaController.js';
+import { obtenerIdFormato_medicina,obtenerNombreFormato_medicina } from '../controller/formato_medicinaController.js';
 //Medicamentos
 import { getMedicamentos,obtenerIdMedicamento,obtenerNombreMedicamentoPorId } from '../controller/medicamentosController.js';
 //Frecuencias
-import { obtenerIdFrecuencia } from '../controller/frecuenciasController.js';
+import { obtenerIdFrecuencia,obtenerNombreFrecuencia } from '../controller/frecuenciasController.js';
 //horas
 import { obtenerIdHora } from '../controller/horasController.js';
 //recordatirios
@@ -31,6 +31,12 @@ router.post('/obtenerIdMedicamento', obtenerIdMedicamento);
 router.post('/obtenerIdFormato_medicina', obtenerIdFormato_medicina);
 router.post('/obtenerIdFrecuencia', obtenerIdFrecuencia);
 router.post('/obtenerIdHora', obtenerIdHora);
+
+//obtener Nombres
+router.post('/obtenerNombreMedicamentoPorId', obtenerNombreMedicamentoPorId);
+router.post('/obtenerNombreFormato_medicina', obtenerNombreFormato_medicina);
+router.post('/obtenerNombreFrecuencia', obtenerNombreFrecuencia);
+
 
 
 //update

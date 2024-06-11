@@ -4,14 +4,14 @@ data class medicamentosReq(
     val medicamento: String?
 )
 data class medicamentosRes(
-    val id: Int
+    val id: Int?,
 )
 
 data class MedicamentosbyIdReq(
-    val id: String
+    val id: String?
 )
 
 data class MedicamentosbyIdRes(
-    val nombre: String
+    val nombre: String?
 )
 
