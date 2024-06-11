@@ -1,5 +1,7 @@
 package com.example.myapplication.data.interfaz
 
+import com.example.myapplication.data.models.HoraMedicaReq
+import com.example.myapplication.data.models.HoraMedicaRes
 import com.example.myapplication.data.models.HoraReq
 import com.example.myapplication.data.models.HoraRes
 import com.example.myapplication.data.models.LoginRequest
@@ -59,6 +61,8 @@ interface ApiService {
     @POST("recordatorio/deleteRecordatorio")
     suspend fun recordatorioDeleteReq(@Body request: recordatorioDeleteReq): Response<recordatorioDeleteRes>
 
+    @POST("horaMedica/createHoraMedica")
+    suspend fun createHoraMedica(@Body request: HoraMedicaReq): Response<HoraMedicaRes>
 
 
 }
