@@ -95,7 +95,11 @@ class EditarMedicamentoPt3 : AppCompatActivity() {
                 Log.d("idFrecuencia", idfrecuenciaRes.body().toString())
                 editarRecordatorio(idRecordatorio, idMedicamentoRes.body()?.id.toString(), idFormatoRes.body()?.id.toString(), idfrecuenciaRes.body()?.id.toString())
             }
-
+        }
+        val btnEditAtras3 = findViewById<Button>(R.id.btnEditCancelar3)
+        btnEditAtras3.setOnClickListener {
+            val intent = Intent(this, slidebar::class.java)
+            startActivity(intent)
         }
     }
 

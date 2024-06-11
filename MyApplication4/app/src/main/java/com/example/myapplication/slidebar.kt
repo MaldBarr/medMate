@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -28,8 +29,11 @@ class slidebar : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mostrarAlertDialog("Bienvenido", "Bienvenido a la aplicación de Medi-Mate")
 
+        val primeraVezIniSes = intent.getBooleanExtra("primera_vezIniSes", false)
+        if (primeraVezIniSes) {
+            mostrarAlertDialog("Bienvenido", "Bienvenido a la aplicación de Medi-Mate")
+        }
         binding = ActivitySlidebarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -48,9 +52,9 @@ class slidebar : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val name = intent.getStringExtra("USER_NAME")
-        val email = intent.getStringExtra("USER_EMAIL")
-
+        val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+        val name = sharedPref.getString("USER_NAME", null)
+        val email = sharedPref.getString("USER_EMAIL", null)
 
 
 

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.R
+import com.example.myapplication.slidebar
 
 class EditarMedicamentoPt2 : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -68,6 +69,11 @@ class EditarMedicamentoPt2 : AppCompatActivity() {
             intent.putExtra("id_recordatorio", id_recordatorio)
             Log.d("EditarMedicamentoPt2", "id_recordatorio: $id_recordatorio")
             intent.putExtra("id_frecuencia", id_frecuencia)
+            startActivity(intent)
+        }
+        val btnEditCancelar2 = findViewById<Button>(R.id.btnEditCancelar2)
+        btnEditCancelar2.setOnClickListener {
+            val intent = Intent(this, slidebar::class.java)
             startActivity(intent)
         }
     }
