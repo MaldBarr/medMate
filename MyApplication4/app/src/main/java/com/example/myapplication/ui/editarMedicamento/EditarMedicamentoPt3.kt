@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -87,25 +90,32 @@ class EditarMedicamentoPt3 : AppCompatActivity() {
                 val idMedicamentoRes = apiService.idMedicamento(medicamentosReq(medicamentoSeleccionado))
                 val idFormatoRes = apiService.idformato(formatoReq(formatoSeleccionado) )
                 val idfrecuenciaRes = apiService.idFrecuencia(frecuenciaReq(frecuenciaSeleccionada) )
-                val request = recordatorioUpatedReq(idRecordatorio, idMedicamentoRes, idFormatoRes, idfrecuenciaRes)
-                val response = apiService.updateRecordatorio(request)
-
-                if (response.isSuccessful) {
-                    // Handle successful response
-                    val updatedRecordatorio = response.body()
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this@EditarMedicamentoPt3, "Recordatorio updated successfully", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    // Handle error
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this@EditarMedicamentoPt3, "Error updating recordatorio", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                Log.d("idMedicamento", idMedicamentoRes.body().toString())
+                Log.d("idFormato", idFormatoRes.body().toString())
+                Log.d("idFrecuencia", idfrecuenciaRes.body().toString())
+                editarRecordatorio(idRecordatorio, idMedicamentoRes.body()?.id.toString(), idFormatoRes.body()?.id.toString(), idfrecuenciaRes.body()?.id.toString())
             }
 
-            val intent = Intent(this, slidebar::class.java)
-            startActivity(intent)
+        }
+    }
+
+    private fun editarRecordatorio(idRecordatorio: String?, idMedicamentoRes: String?, idFormatoRes: String?, idfrecuenciaRes: String?) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val apiService = RetrofitInstance.api
+            val request = recordatorioUpatedReq(idRecordatorio, idMedicamentoRes, idFormatoRes, idfrecuenciaRes)
+            val response = apiService.updateRecordatorio(request)
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@EditarMedicamentoPt3, "Guardando recordatorio...", Toast.LENGTH_SHORT).show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        Toast.makeText(this@EditarMedicamentoPt3, "Recordatorio actualizado", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@EditarMedicamentoPt3, slidebar::class.java)
+                        startActivity(intent)
+                    }, 3000) // 3000 milliseconds = 3 seconds
+                } else {
+                    Toast.makeText(this@EditarMedicamentoPt3, "Error al actualizar el recordatorio", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

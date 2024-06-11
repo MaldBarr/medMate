@@ -37,9 +37,9 @@ data class recordatorioUsuarioRes(
 
 data class recordatorioUpatedReq(
     val id: String?,
-    val id_medicamento: Response<medicamentosRes>,
-    val id_formato: Response<formatoRes>,
-    val id_frecuencia: Response<frecuenciaRes>,
+    val id_medicamento: String?,
+    val id_formato: String?,
+    val id_frecuencia: String?,
 )
 
 data class recordatorioUpdatedRes(
