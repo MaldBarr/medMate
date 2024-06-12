@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,7 +7,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +42,14 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
         Intent intent = new Intent(this, Alarm.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         manager.cancel(pendingIntent);
-        Toast.makeText(this, "Your Alarm is cancel", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Your Alarm is canceled", Toast.LENGTH_SHORT).show();
+
+        // Regresar a la actividad principal (bottomNav)
+        Intent mainIntent = new Intent(this, bottomNav.class);
+        startActivity(mainIntent);
+
+        // Finalizar esta actividad
+        finish();
     }
 
     @Override
@@ -62,10 +67,21 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
     private void Alarm_set(long timeInMillis) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, Alarm.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        // Generar un requestCode único utilizando el tiempo actual en milisegundos
+        int requestCode = (int) System.currentTimeMillis();
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
 
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
 
         Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
+
+        // Regresar a la actividad principal (bottomNav)
+        Intent mainIntent = new Intent(this, Guardando_Medicamento.class);
+        startActivity(mainIntent);
+
+        // Finalizar esta actividad
+        finish();
     }
 }
