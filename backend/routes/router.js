@@ -12,7 +12,7 @@ import { obtenerIdHora } from '../controller/horasController.js';
 //recordatorios
 import { createRecordatorio, getRecordatoriosByUserId ,updateRecordatorio, deleteRecordatorio} from '../controller/recordatorioController.js';
 //HorasMedicas
-import { getHorasMedicas, createHoraMedica, updateHoraMedica } from '../controller/HoraMedicaController.js';
+import { getHorasMedicasByID, createHoraMedica, updateHoraMedica } from '../controller/HoraMedicaController.js';
 
 const router = express.Router();
 
@@ -50,7 +50,7 @@ router.post('/deleteRecordatorio', deleteRecordatorio);
 router.post('/obtenerNombreMedicamentoPorId', obtenerNombreMedicamentoPorId);
 
 //HorasMedicas
-router.get('/getHorasMedicasByID', getHorasMedicas);
+router.post('/getHorasMedicasByID', getHorasMedicasByID);
 router.post('/createHoraMedica', createHoraMedica);
 router.post('/updateHoraMedica', updateHoraMedica);
 

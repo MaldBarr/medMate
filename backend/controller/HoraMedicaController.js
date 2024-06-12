@@ -49,7 +49,9 @@ export const updateHoraMedica = async (req, res) => {
 export const getHorasMedicasByID = async (req, res) => {
     try {
         const { id_usuario } = req.body;
-        const horaMedica = await HoraMedica.findByPk(id_usuario);
+        const horaMedica = await HoraMedica.findAll({
+            where: { id_usuario }
+        });
         if (!horaMedica) {
             return res.status(404).json({
                 message: "Error",

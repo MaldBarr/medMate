@@ -8,6 +8,8 @@ import com.example.myapplication.data.models.LoginRequest
 import com.example.myapplication.data.models.LoginResponse
 import com.example.myapplication.data.models.MedicamentosbyIdReq
 import com.example.myapplication.data.models.MedicamentosbyIdRes
+import com.example.myapplication.data.models.ObtenerHorasMedicasIDReq
+import com.example.myapplication.data.models.ObtenerHorasMedicasIDRes
 import com.example.myapplication.data.models.RegisterRequest
 import com.example.myapplication.data.models.RegisterResponse
 import com.example.myapplication.data.models.formatoReq
@@ -64,5 +66,7 @@ interface ApiService {
     @POST("recordatorio_hora_medica/createHoraMedica")
     suspend fun createHoraMedica(@Body request: HoraMedicaReq): Response<HoraMedicaRes>
 
+    @POST("recordatorio_hora_medica/getHorasMedicasByID")
+    suspend fun getHorasMedicasByID(@Body request: ObtenerHorasMedicasIDReq): Response<List<ObtenerHorasMedicasIDRes>>
 
 }

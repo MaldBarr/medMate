@@ -59,7 +59,7 @@ class HorasMedicas : AppCompatActivity() {
         // Obtener una instancia de SharedPreferences
         val sharedPref = this.getSharedPreferences("MyPref", Context.MODE_PRIVATE)
         // Obtener el USER_ID de SharedPreferences
-        val id = sharedPref.getString("USER_ID", null)
+        val id_usuario = sharedPref.getString("USER_ID", null)
 
         val Tratamiento = findViewById<EditText>(R.id.editTextText3).text.toString()
         val FechaMillis = findViewById<CalendarView>(R.id.calendarView).date
@@ -71,7 +71,7 @@ class HorasMedicas : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch{
             val response = RetrofitInstance.api.createHoraMedica(
                     HoraMedicaReq(
-                        id,
+                        id_usuario,
                         Tratamiento,
                         Fecha,
                         Hora,
