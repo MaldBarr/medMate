@@ -61,7 +61,7 @@ interface ApiService {
     @POST("recordatorio/deleteRecordatorio")
     suspend fun recordatorioDeleteReq(@Body request: recordatorioDeleteReq): Response<recordatorioDeleteRes>
 
-    @POST("horaMedica/createHoraMedica")
+    @POST("recordatorio_hora_medica/createHoraMedica")
     suspend fun createHoraMedica(@Body request: HoraMedicaReq): Response<HoraMedicaRes>
 
 

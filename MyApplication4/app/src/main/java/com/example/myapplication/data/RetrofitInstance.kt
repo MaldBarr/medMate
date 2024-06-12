@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "http://localhost:3000/"
+    private const val BASE_URL = "https://backendmedimate.fly.dev/"
 
     private val gson = GsonBuilder()
         .setLenient()
