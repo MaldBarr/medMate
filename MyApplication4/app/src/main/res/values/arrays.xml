@@ -19,7 +19,6 @@
         <item>Emulsión</item>
         <item>Aerosol</item>
         <item>Espuma</item>
-        <item>Otro</item>
     </string-array>
 
     <string-array name="frecuencia">
