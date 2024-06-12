@@ -42,7 +42,7 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
     private void Alam_cancel() {
         AlarmManager manager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent=new Intent(this,Alarm.class);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_IMMUTABLE);
         manager.cancel(pendingIntent);
         Toast.makeText(this, "Your Alarm is cancel", Toast.LENGTH_SHORT).show();
     }
@@ -61,7 +61,7 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
     private void Alarm_set(long timeInMillis) {
         AlarmManager alarmManager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent=new Intent(this,Alarm.class);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_IMMUTABLE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,timeInMillis,AlarmManager.INTERVAL_DAY,pendingIntent);
         Toast.makeText(this, "Alarm is set", Toast.LENGTH_SHORT).show();
     }
