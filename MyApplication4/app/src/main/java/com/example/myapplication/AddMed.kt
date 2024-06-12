@@ -41,6 +41,11 @@ class AddMed : AppCompatActivity() {
             if (currentItem < adapter.itemCount - 1) {
                 viewPager.currentItem = currentItem + 1
                 progressBar.progress = currentItem + 2
+            } else if (currentItem == adapter.itemCount - 1) {
+                // Lanzar la actividad SetAlarm en el cuarto paso
+                val intent = Intent(this, SetAlarm::class.java)
+                startActivity(intent)
+                finish()
             } else {
                 finish()
             }

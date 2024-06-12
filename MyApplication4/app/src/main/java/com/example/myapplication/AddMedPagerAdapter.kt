@@ -10,7 +10,7 @@ import com.example.myapplication.ui.medstep.MedStep4Fragment
 
 class AddMedPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
-    override fun getItemCount(): Int = 4 // Cambiar a 4
+    override fun getItemCount(): Int = 3 
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
