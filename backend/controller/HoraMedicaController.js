@@ -45,3 +45,22 @@ export const updateHoraMedica = async (req, res) => {
         });
     }
 }
+
+export const getHorasMedicasByID = async (req, res) => {
+    try {
+        const { id_usuario } = req.body;
+        const horaMedica = await HoraMedica.findByPk(id_usuario);
+        if (!horaMedica) {
+            return res.status(404).json({
+                message: "Error",
+                error: "Horas Medicas no encontrada"
+            });
+        }
+        res.json(horaMedica);
+    } catch (error) {
+        res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}

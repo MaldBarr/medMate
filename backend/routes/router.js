@@ -50,7 +50,7 @@ router.post('/deleteRecordatorio', deleteRecordatorio);
 router.post('/obtenerNombreMedicamentoPorId', obtenerNombreMedicamentoPorId);
 
 //HorasMedicas
-router.get('/getHorasMedicas', getHorasMedicas);
+router.get('/getHorasMedicasByID', getHorasMedicas);
 router.post('/createHoraMedica', createHoraMedica);
 router.post('/updateHoraMedica', updateHoraMedica);
 
