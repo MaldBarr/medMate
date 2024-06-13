@@ -30,6 +30,7 @@
                 android:value="" />
         </activity>
 
+        <activity android:name=".ui.EditarHoraMedica"/>
         <activity
             android:name=".ui.editarMedicamento.EditarMedicamentoPt3"
             android:exported="false" />

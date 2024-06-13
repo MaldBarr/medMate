@@ -24,6 +24,7 @@ import com.example.myapplication.data.models.ObtenerHorasMedicasIDRes
 import com.example.myapplication.data.models.recordatorioUsuarioReq
 import com.example.myapplication.data.models.recordatorioUsuarioRes
 import com.example.myapplication.databinding.FragmentLibraryBinding
+import com.example.myapplication.ui.EditarHoraMedica
 import com.example.myapplication.ui.editarMedicamento.EditarMedicamentoPt1
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -92,7 +93,10 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
 
             val editButton = holder.view.findViewById<Button>(R.id.editButton)
             editButton.setOnClickListener {
-                TODO()
+                val context = holder.view.context
+                val intent = Intent(context, EditarHoraMedica::class.java)
+                intent.putExtra("id",myDataset[position].id.toString())
+                context.startActivity(intent)
             }
             val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)
             deleteButton.setOnClickListener {

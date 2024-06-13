@@ -14,6 +14,8 @@ import com.example.myapplication.data.models.ObtenerHorasMedicasIDReq
 import com.example.myapplication.data.models.ObtenerHorasMedicasIDRes
 import com.example.myapplication.data.models.RegisterRequest
 import com.example.myapplication.data.models.RegisterResponse
+import com.example.myapplication.data.models.UpdateHoraMedicaReq
+import com.example.myapplication.data.models.UpdateHoraMedicaRes
 import com.example.myapplication.data.models.formatoReq
 import com.example.myapplication.data.models.formatoRes
 import com.example.myapplication.data.models.frecuenciaReq
@@ -73,5 +75,8 @@ interface ApiService {
 
     @POST("recordatorio_hora_medica/deleteHoraMedica")
     suspend fun deleteHoraMedica(@Body request: DeleteHoraMedicaReq): Response<DeleteHoraMedicaRes>
+
+    @POST("recordatorio_hora_medica/updateHoraMedica")
+    suspend fun updateHoraMedica(@Body request: UpdateHoraMedicaReq): Response<UpdateHoraMedicaRes>
 
 }

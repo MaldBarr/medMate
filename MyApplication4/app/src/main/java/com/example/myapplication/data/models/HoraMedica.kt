@@ -38,3 +38,19 @@ data class DeleteHoraMedicaReq(
 data class DeleteHoraMedicaRes(
     val message: String,
 )
+
+data class UpdateHoraMedicaReq(
+    val id: String?,
+    val nombre: String?,
+    val fecha: Date?,
+    val id_hora: Int?,
+    val id_minuto: Int?,
+)
+
+data class UpdateHoraMedicaRes(
+    val id: Int?,
+    val nombre: String?,
+    val fecha: Date?,
+    val id_hora: Int?,
+    val id_minuto: Int?,
+)
