@@ -1,73 +1,50 @@
-// MedStep4Fragment.kt
 package com.example.myapplication.ui.medstep
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import com.example.myapplication.R
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TimePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import com.example.myapplication.Guardando_Medicamento
-import java.util.*
+import com.example.myapplication.databinding.FragmentMedStep4Binding
 
 class MedStep4Fragment : Fragment() {
 
-    private lateinit var timePicker: TimePicker
-    private lateinit var btnGuardar: Button
-    private var hourOfDay = 0
-    private var minute = 0
+    private var _binding: FragmentMedStep4Binding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_med_step4, container, false)
-
-        timePicker = view.findViewById(R.id.timePicker)
-        btnGuardar = view.findViewById(R.id.btnGuardar)
-
-
-        btnGuardar.setOnClickListener {
-            saveAlarm()
-        }
-
-        return view
+    ): View {
+        _binding = FragmentMedStep4Binding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    private fun saveAlarm() {
-        /*// Obtener la hora y los minutos seleccionados
-        hourOfDay = timePicker.hour
-        minute = timePicker.minute
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-        calendar.set(Calendar.MINUTE, minute)
-        calendar.set(Calendar.SECOND, 0)
+        binding.btnSave.setOnClickListener {
+            val dosis = binding.etDosis.text.toString()
+            val cantidad = binding.etCantidad.text.toString()
 
-        val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val alarmIntent = Intent(requireContext(), AlarmReceiver::class.java)
-        val pendingIntent: PendingIntent = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            PendingIntent.getBroadcast(requireContext(), 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-        } else {
-            PendingIntent.getBroadcast(requireContext(), 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+            if (dosis.isNotEmpty() && cantidad.isNotEmpty()) {
+                val sharedPref = requireActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+                val editor = sharedPref.edit()
+                editor.putString("SELECTED_DOSIS", dosis)
+                editor.putString("SELECTED_CANTIDAD", cantidad)
+                editor.apply()
+
+                Toast.makeText(context, "Dosis y cantidad guardadas", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Por favor, ingrese dosis y cantidad", Toast.LENGTH_SHORT).show()
+            }
         }
+    }
 
-        // Establecer la alarma con el tiempo seleccionado
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
-
-        // Guardar la hora seleccionada en el SharedViewModel
-        val selectedTime = "$hourOfDay:$minute"*/
-        //viewModel.setHora(selectedTime)
-
-        startActivity(Intent(requireContext(), Guardando_Medicamento::class.java))
-        // Iniciar la actividad Guardando_Medicamento
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

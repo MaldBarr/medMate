@@ -27,7 +27,7 @@ class AddMed : AppCompatActivity() {
         viewPager.adapter = adapter
 
         // Set initial progress
-        progressBar.max = 4 // Cambiar a 4
+        progressBar.max = 4
         progressBar.progress = 1
 
         // Botón Cancelar

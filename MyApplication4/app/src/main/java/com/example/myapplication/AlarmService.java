@@ -6,9 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
 
@@ -32,16 +30,18 @@ public class AlarmService extends Service {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
-        SharedPreferences sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        String medicamentoSeleccionado = sharedPref.getString("MEDICAMENTO_SELECCIONADO", null);
+        String medicamentoNombre = intent.getStringExtra("MEDICAMENTO_NOMBRE");
+        String dosis = intent.getStringExtra("DOSIS");
+        String cantidad = intent.getStringExtra("CANTIDAD");
 
+        String notificationText = medicamentoNombre + " " + dosis + " mg (" + cantidad + ")";
 
         Intent stopIntent = new Intent(this, StopAlarmReceiver.class);
         PendingIntent pendingStopIntent = PendingIntent.getBroadcast(this, 0, stopIntent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("¡Recuerda tomar tu medicamento!")
-                .setContentText(medicamentoSeleccionado)
+                .setContentText(notificationText)
                 .setSmallIcon(R.drawable.ic_alarm)
                 .addAction(R.drawable.ic_stop, "Aceptar", pendingStopIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

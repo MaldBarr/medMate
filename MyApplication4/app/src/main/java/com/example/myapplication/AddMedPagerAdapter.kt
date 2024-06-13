@@ -10,14 +10,14 @@ import com.example.myapplication.ui.medstep.MedStep4Fragment
 
 class AddMedPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
-    override fun getItemCount(): Int = 3 
+    override fun getItemCount(): Int = 4 // Cambiar a 4 ya que hay cuatro pasos
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> MedStep1Fragment()
             1 -> MedStep2Fragment()
-            2 -> MedStep3Fragment()
-            3 -> MedStep4Fragment() // Agrega el nuevo fragmento
+            2 -> MedStep4Fragment()
+            3 -> MedStep3Fragment()
             else -> throw IllegalStateException("Invalid position $position")
         }
     }

@@ -7,6 +7,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,13 +61,23 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
                 cal.get(Calendar.DAY_OF_MONTH),
                 tp.getHour(),
                 tp.getMinute(), 0);
-        Alarm_set(cal.getTimeInMillis());
+
+        // Obtener el medicamento seleccionado, dosis y cantidad de SharedPreferences
+        SharedPreferences sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        String medicamentoSeleccionado = sharedPref.getString("MEDICAMENTO_SELECCIONADO", "Nombre del medicamento");
+        String dosis = sharedPref.getString("SELECTED_DOSIS", "0");
+        String cantidad = sharedPref.getString("SELECTED_CANTIDAD", "0");
+
+        Alarm_set(cal.getTimeInMillis(), medicamentoSeleccionado, dosis, cantidad);
     }
 
     @SuppressLint("ScheduleExactAlarm")
-    private void Alarm_set(long timeInMillis) {
+    private void Alarm_set(long timeInMillis, String medicamentoNombre, String dosis, String cantidad) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, Alarm.class);
+        intent.putExtra("MEDICAMENTO_NOMBRE", medicamentoNombre);
+        intent.putExtra("DOSIS", dosis);
+        intent.putExtra("CANTIDAD", cantidad);
 
         // Generar un requestCode único utilizando el tiempo actual en milisegundos
         int requestCode = (int) System.currentTimeMillis();
