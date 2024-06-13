@@ -3,17 +3,20 @@ package com.example.myapplication.ui.library
 //import androidx.fragment.app.viewModels
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Eliminar_Medicamento
 import com.example.myapplication.R
 import com.example.myapplication.data.RetrofitInstance
+import com.example.myapplication.data.models.DeleteHoraMedicaReq
 import com.example.myapplication.data.models.HoraMedicaReq
 import com.example.myapplication.data.models.MedicamentosbyIdReq
 import com.example.myapplication.data.models.ObtenerHorasMedicasIDReq
@@ -41,7 +44,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
     ): View? {
         binding.tvTexto.text = "Fragment Library"
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_library, container, false)
+        return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -87,25 +90,27 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
             val textView = holder.view.findViewById<TextView>(R.id.nameTextView)
             textView.text = myDataset[position].nombre
 
-            /*val editButton = holder.view.findViewById<Button>(R.id.editButton)
+            val editButton = holder.view.findViewById<Button>(R.id.editButton)
             editButton.setOnClickListener {
-                val context = holder.view.context
-                val intent = Intent(context, EditarMedicamentoPt1::class.java)
-                intent.putExtra("id_recordatorio", myDataset[position].id.toString())
-                intent.putExtra("id_medicamento", myDataset[position].id_medicamento)
-                intent.putExtra("id_formato", myDataset[position].id_formato)
-                intent.putExtra("id_frecuencia", myDataset[position].id_frecuencia)
-                context.startActivity(intent)
+                TODO()
             }
             val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)
             deleteButton.setOnClickListener {
-                val context = holder.view.context
-                val intent = Intent(context, Eliminar_Medicamento::class.java)
-                intent.putExtra("id_recordatorio", myDataset[position].id.toString())
-                context.startActivity(intent)
-            }*/
+                eliminarHoraMedica(myDataset[position].id)
+            }
         }
 
         override fun getItemCount() = myDataset.size
+        private fun eliminarHoraMedica(idHoraMedica: Int){
+            CoroutineScope(Dispatchers.Main).launch {
+                val request = DeleteHoraMedicaReq(idHoraMedica)
+                val response = RetrofitInstance.api.deleteHoraMedica(request)
+
+                if (response.isSuccessful) {
+                    val deleteResponse = response.body()
+                    println("DeleteResponse: $deleteResponse")
+                }
+            }
+        }
     }
 }

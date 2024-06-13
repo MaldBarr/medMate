@@ -66,3 +66,22 @@ export const getHorasMedicasByID = async (req, res) => {
         });
     }
 }
+
+export const deleteHoraMedica = async (req, res) => {
+    try {
+        const horaMedica = await HoraMedica.findByPk(req.body.id);
+        if (!horaMedica) {
+            return res.status(404).json({
+                message: "Error",
+                error: "Hora Medica no encontrada"
+            });
+        }
+        await horaMedica.destroy();
+        res.json({ message: "Hora Medica eliminada" });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}

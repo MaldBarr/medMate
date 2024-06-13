@@ -11,6 +11,7 @@ data class HoraMedicaReq(
 )
 
 data class HoraMedicaRes(
+    val id: Int,
     val id_usuario: String?,
     val nombre: String?,
     val fecha: Date?,
@@ -23,8 +24,17 @@ data class ObtenerHorasMedicasIDReq(
 )
 
 data class ObtenerHorasMedicasIDRes(
+    val id: Int,
     val nombre: String?,
     val fecha: Date?,
     val id_hora: Int?,
     val id_minuto: Int?,
+)
+
+data class DeleteHoraMedicaReq(
+    val id: Int,
+)
+
+data class DeleteHoraMedicaRes(
+    val message: String,
 )
