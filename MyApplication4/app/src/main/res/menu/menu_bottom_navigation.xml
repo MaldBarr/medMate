@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/page_calendar"
-        android:icon="@drawable/ic_calendar"
+        android:icon="@drawable/ic_medication"
         android:title="Inicio" />
     <item
         android:id="@+id/page_library"
-        android:icon="@drawable/ic_library"
-        android:title="Biblioteca" />
+        android:icon="@drawable/ic_calendar"
+        android:title="Mis citas" />
     <item
         android:id="@+id/page_add"
         android:icon="@drawable/ic_add_square"

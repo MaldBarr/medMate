@@ -7,18 +7,18 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="@string/menu_home" />
+            android:title="Medi-Mate" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
-            android:title="@string/menu_settings" />
+            android:title="Configuración" />
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share"
-            android:title="@string/menu_share" />
+            android:title="Contactos" />
         <item
             android:id="@+id/nav_aboutUs"
             android:icon="@drawable/ic_info"
-            android:title="@string/menu_aboutUs" />
+            android:title="Sobre nosotros" />
     </group>
 </menu>

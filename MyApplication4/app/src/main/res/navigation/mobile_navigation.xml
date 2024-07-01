@@ -8,24 +8,24 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Medi-Mate"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.myapplication.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
+        android:label="Configuración"
         tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.myapplication.ui.share.ShareFragment"
-        android:label="@string/menu_share"
+        android:label="Contacto"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_aboutUs"
         android:name="com.example.myapplication.ui.aboutUs.AboutUsFragment"
-        android:label="@string/menu_aboutUs"
+        android:label="Sobre nosotros"
         tools:layout="@layout/fragment_about_us" />
 </navigation>
