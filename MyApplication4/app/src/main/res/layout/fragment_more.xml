@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="20sp"
+        android:hint="Más opciones(perfil, config, etc.). No disponible en la version actual"
         android:textColor="@color/white"
-        android:hint="Más opciones(perfil, config, etc.)" />
+        android:textSize="20sp" />
 
 </FrameLayout>
