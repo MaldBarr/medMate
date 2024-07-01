@@ -8,6 +8,20 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.editarMedicamento.EditarMedicamentoPt3">
 
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="54dp"
+      android:layout_marginBottom="23dp"
+      android:text="Frecuencia para tomar medicamento"
+      android:textColor="#FFFFFF"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/editTextText4"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
   <RadioGroup
       android:id="@+id/radioEdit3"
       android:layout_width="413dp"
