@@ -45,6 +45,11 @@ class MedStep1Fragment : Fragment() {
                 editor.apply()
             }
         }
+
+        // Mostrar todos los medicamentos inicialmente
+        binding.autoCompleteMedicamento.post {
+            binding.autoCompleteMedicamento.showDropDown()
+        }
     }
 
     override fun onDestroyView() {

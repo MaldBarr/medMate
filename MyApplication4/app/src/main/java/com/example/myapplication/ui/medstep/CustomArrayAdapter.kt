@@ -25,16 +25,15 @@ class CustomArrayAdapter(
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val results = FilterResults()
-                if (constraint.isNullOrEmpty()) {
-                    results.values = items
-                    results.count = items.size
+                val filteredList = if (constraint.isNullOrEmpty()) {
+                    items
                 } else {
-                    val filteredList = items.filter {
+                    items.filter {
                         it.contains(constraint, ignoreCase = true)
                     }
-                    results.values = filteredList
-                    results.count = filteredList.size
                 }
+                results.values = filteredList
+                results.count = filteredList.size
                 return results
             }
 
