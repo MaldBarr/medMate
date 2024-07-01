@@ -24,4 +24,12 @@
         <!-- RadioButtons se agregarán dinámicamente aquí -->
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/tvhintop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Más opciones proximamente"
+        android:textSize="20sp" />
+
+
 </LinearLayout>

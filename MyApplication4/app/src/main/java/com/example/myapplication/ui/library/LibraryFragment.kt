@@ -43,7 +43,7 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.tvTexto.text = "Fragment Library"
+        //binding.tvTexto.text = "Biblioteca no disponible en la versión actual"
         // Inflate the layout for this fragment
         return binding.root
     }

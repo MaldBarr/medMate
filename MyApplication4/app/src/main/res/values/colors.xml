@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="btnColor">#2D67E5</color>
+    <color name="btnCancelar">#FF5252</color>
 </resources>

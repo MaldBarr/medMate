@@ -13,20 +13,17 @@
         <item>Ungüento</item>
         <item>Gel</item>
         <item>Supositorio</item>
-        <item>Óvulo</item>
         <item>Parche</item>
         <item>Loción</item>
         <item>Emulsión</item>
         <item>Aerosol</item>
-        <item>Espuma</item>
+        <item>Otro</item>
     </string-array>
 
     <string-array name="frecuencia">
+
         <item>Una vez al día</item>
-        <item>Varias veces al día</item>
-        <item>Día por medio</item>
-        <item>Días especificos de la semana</item>
-        <item>Ciclo recurrente</item>
+
     </string-array>
 
     <string-array name="medicamentos">

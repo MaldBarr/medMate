@@ -9,9 +9,13 @@
         android:id="@+id/nameTextView"
         style="@style/RecyclerViewTextStyle"
         android:layout_width="0dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Nombre" />
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:text="Nombre"
+        android:textColor="@color/black"/>
 
 
     <com.google.android.material.button.MaterialButton
@@ -19,14 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Editar"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#BAFFB700" />
+        android:textColor="@color/btnColor"
+        app:backgroundTint="@color/white" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Eliminar"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#B9FF0000" />
+        android:textColor="@color/btnCancelar"
+        app:backgroundTint="@color/white" />
 </LinearLayout>

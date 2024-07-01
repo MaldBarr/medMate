@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#009688"
+    android:background="@color/white"
     tools:context=".ui.notification.NotificationFragment">
 
     <TextView
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:hint="Historial de notificaciones, no disponible en la version actual"
+        android:hint="Historial de notificaciones, no disponible en la versión actual"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
