@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.data.RetrofitInstance
 import com.example.myapplication.data.models.HoraMedicaReq
+import com.example.myapplication.ui.library.LibraryFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ class Guardando_Hora_Medica : AppCompatActivity() {
         val Fecha = intent.getStringExtra("Fecha")
         val Hora = intent.getStringExtra("Hora")
         val Minuto = intent.getStringExtra("Minuto")
-        val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val date : Date = sdf.parse(Fecha) ?: Date()
 
         // Crear un SimpleDateFormat para analizar la cadena de fecha

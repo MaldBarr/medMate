@@ -3,12 +3,15 @@ package com.example.myapplication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import java.util.Calendar
 import java.util.Date
 
 class HorasMedicas : AppCompatActivity() {
@@ -17,16 +20,19 @@ class HorasMedicas : AppCompatActivity() {
         setContentView(R.layout.activity_add_reminder)
 
         val botonAgregarHora = findViewById<Button>(R.id.button4)
-        botonAgregarHora.setOnClickListener {
-            val Tratamiento = findViewById<EditText>(R.id.editTextText3).text.toString()
-
-            if (Tratamiento.isNotEmpty()) {
-                // Agregar la hora médica a la base de datos
-                cargarRecordatorio()
-            } else {
-                mostrarAlertDialog("Error", "Debe completar el campo de Nombre del tratamiento.") {}
+            botonAgregarHora.setOnClickListener {
+                val Tratamiento = findViewById<EditText>(R.id.editTextText3).text.toString()
+                if (Tratamiento.isNotEmpty()) {
+                    // Agregar la hora médica a la base de datos
+                    Toast.makeText(this, "Seleccione nuevamente la fecha", Toast.LENGTH_LONG).show()
+                    cargarRecordatorio()
+                } else {
+                    mostrarAlertDialog(
+                        "Error",
+                        "Debe completar el campo de Nombre del tratamiento."
+                    ) {}
+                }
             }
-        }
 
         val botonCancelar = findViewById<Button>(R.id.button5)
         botonCancelar.setOnClickListener {
@@ -53,18 +59,26 @@ class HorasMedicas : AppCompatActivity() {
         val id_usuario = sharedPref.getString("USER_ID", null)
 
         val Tratamiento = findViewById<EditText>(R.id.editTextText3).text.toString()
-        val FechaMillis = findViewById<CalendarView>(R.id.calendarView).date
-        val Fecha = Date(FechaMillis)
         val Hora = findViewById<TimePicker>(R.id.timePicker).hour
         val Minuto = findViewById<TimePicker>(R.id.timePicker).minute
-
+        val FechaMillis = findViewById<CalendarView>(R.id.calendarView)
+        FechaMillis.setOnDateChangeListener{ view, year, month, dayOfMonth ->
+            val Fecha = "$dayOfMonth/${month + 1}/$year"
+            val intent = Intent(this, Guardando_Hora_Medica::class.java)
+            intent.putExtra("Tratamiento", Tratamiento)
+            intent.putExtra("Fecha", Fecha)
+            intent.putExtra("Hora", Hora.toString())
+            intent.putExtra("Minuto", Minuto.toString())
+            startActivity(intent)
+        }
+        /*
         val intent = Intent(this, Guardando_Hora_Medica::class.java)
         intent.putExtra("Tratamiento", Tratamiento)
-        intent.putExtra("Fecha", Fecha.toString())
+        intent.putExtra("Fecha", Fecha)
         intent.putExtra("Hora", Hora.toString())
         intent.putExtra("Minuto", Minuto.toString())
         startActivity(intent)
-
+        */
         // Guardar el medicamento
     }
 }
