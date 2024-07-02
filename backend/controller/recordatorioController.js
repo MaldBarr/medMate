@@ -14,8 +14,8 @@ export const getRecordatorios = async (req, res) => {
 
 export const createRecordatorio = async (req, res) => {
     try {
-        const { id_usuario, id_medicamento, id_formato,id_frecuencia } = req.body;
-        const recordatorio = await Recordatorio.create({ id_usuario, id_medicamento, id_formato,id_frecuencia });
+        const { id_usuario, id_medicamento, id_formato,id_frecuencia,dosis,cantidad,hora } = req.body;
+        const recordatorio = await Recordatorio.create({ id_usuario, id_medicamento, id_formato,id_frecuencia,dosis,cantidad,hora });
         res.json(recordatorio);
     } catch (error) {
         res.status(500).json({

@@ -29,6 +29,8 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
         btn_cancel = findViewById(R.id.cancel_alarm);
         tp = findViewById(R.id.time);
 
+
+
         btn_set.setOnClickListener(this);
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,12 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
         String medicamentoSeleccionado = sharedPref.getString("MEDICAMENTO_SELECCIONADO", "Nombre del medicamento");
         String dosis = sharedPref.getString("SELECTED_DOSIS", "0");
         String cantidad = sharedPref.getString("SELECTED_CANTIDAD", "0");
+
+        // Guardar la hora seleccionada en SharedPreferences
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String selectedHour = tp.getHour() + ":" + tp.getMinute();
+        editor.putString("SELECTED_HORA", selectedHour);
+        editor.apply();
 
         Alarm_set(cal.getTimeInMillis(), medicamentoSeleccionado, dosis, cantidad);
     }

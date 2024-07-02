@@ -120,6 +120,9 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
                     intent.putExtra("id_medicamento", myDataset[position].id_medicamento)
                     intent.putExtra("id_formato", myDataset[position].id_formato)
                     intent.putExtra("id_frecuencia", myDataset[position].id_frecuencia)
+                    intent.putExtra("dosis", myDataset[position].dosis)
+                    intent.putExtra("cantidad", myDataset[position].cantidad)
+                    intent.putExtra("hora", myDataset[position].hora)
                     context.startActivity(intent)
                 }
         }

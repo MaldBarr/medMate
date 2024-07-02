@@ -7,6 +7,9 @@ data class recordatorioReq(
     val id_medicamento: Int?,
     val id_formato: Int?,
     val id_frecuencia: Int?,
+    val dosis: String?,
+    val cantidad: String?,
+    val hora : String?,
 )
 
 data class recordatorioRes(
@@ -15,7 +18,9 @@ data class recordatorioRes(
     val id_medicamento: String,
     val id_formato: String,
     val id_frecuencia: String,
-    val id_hora: String,
+    val dosis: String,
+    val cantidad: String,
+    val hora : String,
     val created_at: String,
     val updated_at: String,
 )
@@ -30,7 +35,9 @@ data class recordatorioUsuarioRes(
     var id_medicamento: String,
     val id_formato: String,
     val id_frecuencia: String,
-    val id_hora: String,
+    val dosis: String,
+    val cantidad: String,
+    val hora : String,
     val created_at: String,
     val updated_at: String,
 )
@@ -48,7 +55,9 @@ data class recordatorioUpdatedRes(
     val id_medicamento: String,
     val id_formato: String,
     val id_frecuencia: String,
-    val id_hora: String,
+    val dosis: String,
+    val cantidad: String,
+    val hora : String,
     val created_at: String,
     val updated_at: String,
 )

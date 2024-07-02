@@ -2,6 +2,7 @@ package com.example.myapplication.ui.medstep
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,9 @@ class MedStep4Fragment : Fragment() {
                 editor.putString("SELECTED_DOSIS", dosis)
                 editor.putString("SELECTED_CANTIDAD", cantidad)
                 editor.apply()
+
+                Log.d("SharedViewModel", "Dosis: $dosis")
+                Log.d("SharedViewModel", "Cantidad: $cantidad")
 
                 Toast.makeText(context, "Dosis y cantidad guardadas", Toast.LENGTH_SHORT).show()
             } else {

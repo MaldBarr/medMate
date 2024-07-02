@@ -19,7 +19,13 @@ const Recordatorio = db.define('recordatorio', {
     id_frecuencia: {
         type: DataTypes.STRING,
     },
-    id_hora: {
+    dosis:{
+        type: DataTypes.STRING,
+    },
+    cantidad:{
+        type: DataTypes.STRING,
+    },
+    hora: {
         type: DataTypes.STRING,
     },
     createdAt: {

@@ -68,6 +68,12 @@ class Guardando_Medicamento : AppCompatActivity() {
         // Obtener el selectedFrequency de SharedPreferences
         val selectedFrequency = sharedPref.getString("SELECTED_FREQUENCY", null)
 
+        val selectedDosis = sharedPref.getString("SELECTED_DOSIS", null)
+
+        val selectedCantidad = sharedPref.getString("SELECTED_CANTIDAD", null)
+
+        val selectedHora = sharedPref.getString("SELECTED_HORA", null)
+
         // Cambiar el texto del TextView a "Guardando Medicamento"
         runOnUiThread {
             val textView = findViewById<TextView>(R.id.guardando_guardado)
@@ -94,7 +100,10 @@ class Guardando_Medicamento : AppCompatActivity() {
                         id,
                         idMedicamento,
                         idFormato,
-                        idFrecuencia
+                        idFrecuencia,
+                        selectedDosis,
+                        selectedCantidad,
+                        selectedHora
                     )
                 )
 

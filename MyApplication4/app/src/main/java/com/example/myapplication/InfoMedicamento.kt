@@ -25,6 +25,10 @@ class InfoMedicamento : AppCompatActivity() {
         val idMedicamento = intent.getStringExtra("id_medicamento")
         val idFormato = intent.getStringExtra("id_formato")
         val idFrecuencia = intent.getStringExtra("id_frecuencia")
+        val dosis = intent.getStringExtra("dosis")
+        val cantidad = intent.getStringExtra("cantidad")
+        val hora = intent.getStringExtra("hora")
+
 
         val formatoArray = resources.getStringArray(R.array.formatos_array)
         val frecuenciaArray = resources.getStringArray(R.array.frecuencia)
@@ -40,6 +44,18 @@ class InfoMedicamento : AppCompatActivity() {
         if (idFrecuencia != null) {
             val textViewFrecuencia = findViewById<TextView>(R.id.infoFrecuenciaMedicamento)
             textViewFrecuencia.setText(frecuenciaArray[idFrecuencia.toInt()-1])
+        }
+        if (dosis != null) {
+            val textViewDosis = findViewById<TextView>(R.id.textViewDosis)
+            textViewDosis.setText(dosis)
+        }
+        if (cantidad != null) {
+            val textViewCantidad = findViewById<TextView>(R.id.textViewCantidad)
+            textViewCantidad.setText(cantidad)
+        }
+        if (hora != null) {
+            val textViewHora = findViewById<TextView>(R.id.infoHoraMedicamento)
+            textViewHora.setText(hora)
         }
 
 
