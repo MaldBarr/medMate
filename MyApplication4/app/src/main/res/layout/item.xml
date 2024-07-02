@@ -12,24 +12,22 @@
         android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:padding="10dp"
         android:text="Nombre"
         android:textColor="@color/black"/>
 
 
-    <Button
+    <ImageButton
         android:id="@+id/infoButtom"
-        android:layout_width="59dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:isScrollContainer="false"
-        android:textColor="#FFC800"
-        app:icon="@drawable/baseline_info_24"
-        app:iconGravity="textEnd"
-        app:iconPadding="0dp"
-        app:iconSize="30sp"
-        app:iconTint="#FFE711" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Información del medicamento"
+        android:src="@drawable/ic_info"
+        app:tint="@color/white" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editButton"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -112,7 +113,7 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
                 intent.putExtra("id_recordatorio", myDataset[position].id.toString())
                 context.startActivity(intent)
             }
-            val infoButton = holder.view.findViewById<Button>(R.id.infoButtom)
+            val infoButton = holder.view.findViewById<ImageButton>(R.id.infoButtom)
             infoButton.setOnClickListener{
                     val context = holder.view.context
                     val intent = Intent(context, InfoMedicamento::class.java)
