@@ -18,12 +18,26 @@
         android:textColor="@color/black"/>
 
 
+    <Button
+        android:id="@+id/infoButtom"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:isScrollContainer="false"
+        android:textColor="#FFC800"
+        app:icon="@drawable/baseline_info_24"
+        app:iconGravity="textEnd"
+        app:iconPadding="0dp"
+        app:iconSize="30sp"
+        app:iconTint="#FFE711" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Editar"
         android:textColor="@color/btnColor"
+        android:textSize="14sp"
         app:backgroundTint="@color/white" />
 
     <com.google.android.material.button.MaterialButton

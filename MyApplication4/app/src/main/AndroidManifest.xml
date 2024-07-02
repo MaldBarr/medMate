@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
@@ -23,14 +23,16 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".InfoMedicamento"
+            android:exported="false" />
+        <activity
             android:name=".SetAlarm"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".ui.EditarHoraMedica"/>
+        <activity android:name=".ui.EditarHoraMedica" />
         <activity
             android:name=".ui.editarMedicamento.EditarMedicamentoPt3"
             android:exported="false" />
@@ -94,9 +96,11 @@
         <receiver
             android:name=".Alarm"
             android:enabled="true"
-            android:exported="true"
-            />
-        <receiver android:name=".StopAlarmReceiver" android:exported="true" />
+            android:exported="true" />
+        <receiver
+            android:name=".StopAlarmReceiver"
+            android:exported="true" />
+
         <service
             android:name=".AlarmService"
             android:exported="false"

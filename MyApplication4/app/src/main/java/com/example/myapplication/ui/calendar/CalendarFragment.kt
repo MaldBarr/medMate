@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Eliminar_Medicamento
+import com.example.myapplication.InfoMedicamento
 import com.example.myapplication.R
 import com.example.myapplication.data.RetrofitInstance
 import com.example.myapplication.data.models.MedicamentosbyIdReq
@@ -111,6 +112,15 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
                 intent.putExtra("id_recordatorio", myDataset[position].id.toString())
                 context.startActivity(intent)
             }
+            val infoButton = holder.view.findViewById<Button>(R.id.infoButtom)
+            infoButton.setOnClickListener{
+                    val context = holder.view.context
+                    val intent = Intent(context, InfoMedicamento::class.java)
+                    intent.putExtra("id_medicamento", myDataset[position].id_medicamento)
+                    intent.putExtra("id_formato", myDataset[position].id_formato)
+                    intent.putExtra("id_frecuencia", myDataset[position].id_frecuencia)
+                    context.startActivity(intent)
+                }
         }
 
         override fun getItemCount() = myDataset.size
