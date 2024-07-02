@@ -117,9 +117,9 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
                 val intent = Intent(context, VerInfoHoraMedica::class.java)
                 intent.putExtra("id",myDataset[position].id.toString())
                 intent.putExtra("nombre",myDataset[position].nombre)
-                intent.putExtra("fecha",myDataset[position].fecha)
-                intent.putExtra("hora",myDataset[position].id_hora)
-                intent.putExtra("minuto",myDataset[position].id_minuto)
+                intent.putExtra("fecha",myDataset[position].fecha.toString())
+                intent.putExtra("hora",myDataset[position].id_hora.toString())
+                intent.putExtra("minuto",myDataset[position].id_minuto.toString())
                 context.startActivity(intent)
             }
         }
