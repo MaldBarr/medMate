@@ -38,6 +38,8 @@ class Guardando_Hora_Medica : AppCompatActivity() {
         val Fecha = intent.getStringExtra("Fecha")
         val Hora = intent.getStringExtra("Hora")
         val Minuto = intent.getStringExtra("Minuto")
+        val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+        val date : Date = sdf.parse(Fecha) ?: Date()
 
         // Crear un SimpleDateFormat para analizar la cadena de fecha
 
@@ -46,7 +48,7 @@ class Guardando_Hora_Medica : AppCompatActivity() {
                 HoraMedicaReq(
                     id_usuario,
                     Tratamiento,
-                    Date(Fecha),
+                    date,
                     Hora?.toInt(),
                     Minuto?.toInt()
                 )

@@ -98,6 +98,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.VerInfoHoraMedica"
+            android:exported="false" />
 
         <receiver
             android:name=".Alarm"

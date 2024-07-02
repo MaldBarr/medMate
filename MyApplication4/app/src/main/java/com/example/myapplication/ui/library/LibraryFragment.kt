@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ import com.example.myapplication.data.models.recordatorioUsuarioReq
 import com.example.myapplication.data.models.recordatorioUsuarioRes
 import com.example.myapplication.databinding.FragmentLibraryBinding
 import com.example.myapplication.ui.EditarHoraMedica
+import com.example.myapplication.ui.VerInfoHoraMedica
 import com.example.myapplication.ui.editarMedicamento.EditarMedicamentoPt1
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -100,11 +102,24 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
                 intent.putExtra("id",myDataset[position].id.toString())
                 context.startActivity(intent)
             }
+
             val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)
             deleteButton.setOnClickListener {
                 val context = holder.view.context
                 val intent = Intent(context, Eliminar_HoraMedica::class.java)
                 intent.putExtra("idHoraMedica", myDataset[position].id.toString())
+                context.startActivity(intent)
+            }
+
+            val infoButton = holder.view.findViewById<ImageButton>(R.id.infoButtom)
+            infoButton.setOnClickListener {
+                val context = holder.view.context
+                val intent = Intent(context, VerInfoHoraMedica::class.java)
+                intent.putExtra("id",myDataset[position].id.toString())
+                intent.putExtra("nombre",myDataset[position].nombre)
+                intent.putExtra("fecha",myDataset[position].fecha)
+                intent.putExtra("hora",myDataset[position].id_hora)
+                intent.putExtra("minuto",myDataset[position].id_minuto)
                 context.startActivity(intent)
             }
         }
