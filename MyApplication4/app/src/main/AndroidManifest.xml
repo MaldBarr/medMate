@@ -23,6 +23,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Eliminar_HoraMedica"
+            android:exported="false" />
+        <activity
+            android:name=".Guardando_Hora_Medica"
+            android:exported="false" />
+        <activity
             android:name=".InfoMedicamento"
             android:exported="false" />
         <activity

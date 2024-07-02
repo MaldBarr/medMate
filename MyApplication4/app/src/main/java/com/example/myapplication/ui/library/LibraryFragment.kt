@@ -3,6 +3,7 @@ package com.example.myapplication.ui.library
 //import androidx.fragment.app.viewModels
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Telephony.Mms.Intents
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Eliminar_HoraMedica
 import com.example.myapplication.Eliminar_Medicamento
 import com.example.myapplication.R
 import com.example.myapplication.data.RetrofitInstance
@@ -100,21 +102,13 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
             }
             val deleteButton = holder.view.findViewById<Button>(R.id.deleteButton)
             deleteButton.setOnClickListener {
-                eliminarHoraMedica(myDataset[position].id)
+                val context = holder.view.context
+                val intent = Intent(context, Eliminar_HoraMedica::class.java)
+                intent.putExtra("idHoraMedica", myDataset[position].id.toString())
+                context.startActivity(intent)
             }
         }
 
         override fun getItemCount() = myDataset.size
-        private fun eliminarHoraMedica(idHoraMedica: Int){
-            CoroutineScope(Dispatchers.Main).launch {
-                val request = DeleteHoraMedicaReq(idHoraMedica)
-                val response = RetrofitInstance.api.deleteHoraMedica(request)
-
-                if (response.isSuccessful) {
-                    val deleteResponse = response.body()
-                    println("DeleteResponse: $deleteResponse")
-                }
-            }
-        }
     }
 }

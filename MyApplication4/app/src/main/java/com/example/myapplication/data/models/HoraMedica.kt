@@ -32,7 +32,7 @@ data class ObtenerHorasMedicasIDRes(
 )
 
 data class DeleteHoraMedicaReq(
-    val id: Int,
+    val id: Int?,
 )
 
 data class DeleteHoraMedicaRes(
