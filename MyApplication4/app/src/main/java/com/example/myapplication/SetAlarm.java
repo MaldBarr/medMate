@@ -87,6 +87,20 @@ public class SetAlarm extends AppCompatActivity implements View.OnClickListener 
         intent.putExtra("DOSIS", dosis);
         intent.putExtra("CANTIDAD", cantidad);
 
+        // Obtén la hora actual
+        Calendar calNow = Calendar.getInstance();
+        long currentTimeInMillis = calNow.getTimeInMillis();
+
+        // Obtén la hora seleccionada
+        Calendar calAlarm = Calendar.getInstance();
+        calAlarm.setTimeInMillis(timeInMillis);
+
+        // Si la hora seleccionada está en el pasado para el día actual, añade un día
+        if (timeInMillis <= currentTimeInMillis) {
+            calAlarm.add(Calendar.DAY_OF_YEAR, 1);
+            timeInMillis = calAlarm.getTimeInMillis();
+        }
+
         // Generar un requestCode único utilizando el tiempo actual en milisegundos
         int requestCode = (int) System.currentTimeMillis();
 

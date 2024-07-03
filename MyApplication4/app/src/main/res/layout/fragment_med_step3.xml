@@ -14,6 +14,12 @@
         android:text="¿Con qué frecuencia se debe tomar el medicamento?"
         android:textSize="20sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Seleccione una opción antes de avanzar"
+        android:textSize="15sp" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"

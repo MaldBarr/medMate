@@ -12,6 +12,12 @@
         android:text="¿En qué presentación viene el medicamento?"
         android:textSize="18sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Seleccione una opción antes de avanzar"
+        android:textSize="15sp" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"

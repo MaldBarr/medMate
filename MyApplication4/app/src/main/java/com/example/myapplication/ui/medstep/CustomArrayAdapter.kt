@@ -26,7 +26,7 @@ class CustomArrayAdapter(
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val results = FilterResults()
                 val filteredList = if (constraint.isNullOrEmpty()) {
-                    items
+                    items // Mostrar todos los elementos si no hay filtro
                 } else {
                     items.filter {
                         it.contains(constraint, ignoreCase = true)
@@ -48,3 +48,4 @@ class CustomArrayAdapter(
         }
     }
 }
+

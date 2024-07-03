@@ -42,21 +42,19 @@ class MedStep1Fragment : Fragment() {
             val service = RetrofitInstance.api.obtenerTodosMedicamentos()
             val response = service
             if (response.isSuccessful) {
-                // Almacena la respuesta en MedicamentosArray
                 medicamentosArray = response.body() ?: emptyList<MedicamentosTodosRes>()
-                Log.d("MedStep1Fragment", "Response from API: $medicamentosArray")
-                // Actualiza la UI en el hilo principal
+
                 withContext(Dispatchers.Main) {
-                    // Mapea medicamentosArray a una lista de nombres de medicamentos
                     val medicamentosNombres = medicamentosArray.map { it.medicamento ?: "" }
                     val adapter = CustomArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, medicamentosNombres)
                     binding.autoCompleteMedicamento.setAdapter(adapter)
-                    Log.d("MedStep1Fragment", "Adaptador actualizado con los nombres de los medicamentos: $medicamentosNombres")
-                    // Establecer el threshold a 1
-                    binding.autoCompleteMedicamento.threshold = 1
+
+                    // Configurar el threshold y mostrar el dropdown
+                    binding.autoCompleteMedicamento.threshold = 0 // Mostrará todos los medicamentos desde el inicio
+                    binding.autoCompleteMedicamento.showDropDown()
                 }
             } else {
-                // Maneja el error aquí
+                // Manejar error aquí
             }
         }
 

@@ -34,6 +34,14 @@
             android:inputType="number"
             android:hint="Cantidad" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="*IMPORTANTE: Debe presionar 'Guardar' antes avanzar al siguiente paso*"
+            android:textSize="18sp"
+            android:textColorHint="@color/btnCancelar"
+            android:layout_marginTop="16dp" />
+
         <Button
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
