@@ -28,6 +28,11 @@ class InfoMedicamento : AppCompatActivity() {
         val dosis = intent.getStringExtra("dosis")
         val cantidad = intent.getStringExtra("cantidad")
         val hora = intent.getStringExtra("hora")
+        val partes = hora?.split(":")
+        val parteHora = partes?.get(0)
+        val parteMinuto = partes?.get(1)
+        val minutoForm = parteMinuto?.toIntOrNull()
+        val minuto = if (minutoForm != null) String.format("%02d", minutoForm) else minutoForm
 
 
         val formatoArray = resources.getStringArray(R.array.formatos_array)
@@ -55,7 +60,7 @@ class InfoMedicamento : AppCompatActivity() {
         }
         if (hora != null) {
             val textViewHora = findViewById<TextView>(R.id.infoHoraMedicamento)
-            textViewHora.setText(hora)
+            textViewHora.setText(parteHora + ":" + minuto)
         }
 
 

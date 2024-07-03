@@ -22,7 +22,9 @@ class VerInfoHoraMedica : AppCompatActivity() {
         val nombre = intent.getStringExtra("nombre")
         val fecha = intent.getStringExtra("fecha")
         val hora = intent.getStringExtra("hora")
-        val minuto = intent.getStringExtra("minuto")
+        val minutoString = intent.getStringExtra("minuto")
+        val minutoForm = minutoString?.toIntOrNull()
+        val minuto = if (minutoForm != null) String.format("%02d", minutoForm) else minutoForm
 
         Log.d("Fecha", "Fecha:"+fecha)
         Log.d("hora", "hora:"+hora)
