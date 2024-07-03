@@ -8,6 +8,7 @@ import com.example.myapplication.data.models.HoraReq
 import com.example.myapplication.data.models.HoraRes
 import com.example.myapplication.data.models.LoginRequest
 import com.example.myapplication.data.models.LoginResponse
+import com.example.myapplication.data.models.MedicamentosTodosRes
 import com.example.myapplication.data.models.MedicamentosbyIdReq
 import com.example.myapplication.data.models.MedicamentosbyIdRes
 import com.example.myapplication.data.models.ObtenerHorasMedicasIDReq
@@ -32,6 +33,7 @@ import com.example.myapplication.data.models.recordatorioUsuarioReq
 import com.example.myapplication.data.models.recordatorioUsuarioRes
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -79,4 +81,6 @@ interface ApiService {
     @POST("recordatorio_hora_medica/updateHoraMedica")
     suspend fun updateHoraMedica(@Body request: UpdateHoraMedicaReq): Response<UpdateHoraMedicaRes>
 
+    @GET("medicamentos/getMedicamentos")
+    suspend fun obtenerTodosMedicamentos(): Response<List<MedicamentosTodosRes>>
 }
