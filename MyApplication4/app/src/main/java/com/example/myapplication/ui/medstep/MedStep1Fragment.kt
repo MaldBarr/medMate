@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
@@ -36,15 +37,19 @@ class MedStep1Fragment : Fragment() {
         // Crea una instancia de ApiService
         var medicamentosArray = emptyList<MedicamentosTodosRes>()
 
-        // Llama a obtenerTodosMedicamentos en una Coroutine
+        // Muestra un Toast con el mensaje "Cargando Medicamentos"
+        Toast.makeText(requireContext(), "Cargando Medicamentos", Toast.LENGTH_SHORT).show()
+
         // Llama a obtenerTodosMedicamentos en una Coroutine
         CoroutineScope(Dispatchers.IO).launch {
             val service = RetrofitInstance.api.obtenerTodosMedicamentos()
             val response = service
             if (response.isSuccessful) {
+                // Almacena la respuesta en MedicamentosArray
                 medicamentosArray = response.body() ?: emptyList<MedicamentosTodosRes>()
 
                 withContext(Dispatchers.Main) {
+                    // Mapea medicamentosArray a una lista de nombres de medicamentos
                     val medicamentosNombres = medicamentosArray.map { it.medicamento ?: "" }
                     val adapter = CustomArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, medicamentosNombres)
                     binding.autoCompleteMedicamento.setAdapter(adapter)
@@ -52,9 +57,12 @@ class MedStep1Fragment : Fragment() {
                     // Configurar el threshold y mostrar el dropdown
                     binding.autoCompleteMedicamento.threshold = 0 // Mostrará todos los medicamentos desde el inicio
                     binding.autoCompleteMedicamento.showDropDown()
+
+                    // Muestra un Toast con el mensaje "Medicamentos Guardados"
+                    Toast.makeText(requireContext(), "Medicamentos Guardados", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                // Manejar error aquí
+                // Maneja el error aquí
             }
         }
 
