@@ -109,6 +109,11 @@
             android:name=".StopAlarmReceiver"
             android:exported="true" />
 
+        <receiver android:name=".AlarmService$PostponeAlarmReceiver"
+
+        android:exported="true"/>
+
+
         <service
             android:name=".AlarmService"
             android:exported="false"
