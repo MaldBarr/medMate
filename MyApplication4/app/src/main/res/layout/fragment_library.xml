@@ -26,6 +26,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No tienes Agregada ningun Hora Medica"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listadoHorasMedicas"
             android:layout_width="match_parent"

@@ -57,26 +57,27 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
             val sharedPref = requireActivity().getSharedPreferences("MyPref", 0)
             val id = sharedPref.getString("USER_ID", null)
             val response = RetrofitInstance.api.getRecordatoriosByUserId(recordatorioUsuarioReq(id))
-            if (response.isSuccessful) {
-                val recordatorios = response.body()
-                if (recordatorios != null && recordatorios.isNotEmpty()) {
-                    for (recordatorio in recordatorios) {
-                        val idMedicamento = recordatorio.id_medicamento
-                        val responseMedicamento = RetrofitInstance.api.getNombreMedicamentoById(
-                            MedicamentosbyIdReq(idMedicamento)
-                        )
-                        if (responseMedicamento.isSuccessful) {
-                            val medicamentoNombre = responseMedicamento.body()?.nombre
-                            if (medicamentoNombre != null) {
-                                println("Adding $medicamentoNombre to dataset") // Debugging line
-                                recordatorio.id_medicamento = medicamentoNombre
-                                myDataset.add(recordatorio)
-                            }
+            val recordatorios = response.body()
+            if (response.isSuccessful && !recordatorios.isNullOrEmpty()) {
+                for (recordatorio in recordatorios) {
+                    val idMedicamento = recordatorio.id_medicamento
+                    val responseMedicamento = RetrofitInstance.api.getNombreMedicamentoById(
+                        MedicamentosbyIdReq(idMedicamento)
+                    )
+                    if (responseMedicamento.isSuccessful) {
+                        val medicamentoNombre = responseMedicamento.body()?.nombre
+                        if (medicamentoNombre != null) {
+                            println("Adding $medicamentoNombre to dataset") // Debugging line
+                            recordatorio.id_medicamento = medicamentoNombre
+                            myDataset.add(recordatorio)
                         }
                     }
-                    println("Notifying adapter about dataset change") // Debugging line
-                    adapter.notifyDataSetChanged()
                 }
+                println("Notifying adapter about dataset change") // Debugging line
+                adapter.notifyDataSetChanged()
+                binding.textView12.visibility = View.GONE // Ocultar el TextView si la respuesta es exitosa y hay recordatorios
+            } else {
+                binding.textView12.visibility = View.VISIBLE // Mostrar el TextView si la respuesta no es exitosa o si no hay recordatorios
             }
         }
     }

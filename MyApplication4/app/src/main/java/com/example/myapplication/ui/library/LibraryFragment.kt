@@ -67,15 +67,16 @@ class LibraryFragment : Fragment(R.layout.fragment_library) {
             val sharedPref = requireActivity().getSharedPreferences("MyPref", 0)
             val id_usuario = sharedPref.getString("USER_ID", null)
             val response = RetrofitInstance.api.getHorasMedicasByID(ObtenerHorasMedicasIDReq(id_usuario))
-            if (response.isSuccessful) {
-                val horasMedicas = response.body()
-                if (horasMedicas != null && horasMedicas.isNotEmpty()) {
-                    for (horaMedica in horasMedicas) {
-                        myDataset.add(horaMedica)
-                    }
-                    println("Notifying adapter about dataset change") // Debugging line
-                    adapter.notifyDataSetChanged()
+            val horasMedicas = response.body()
+            if (response.isSuccessful && !horasMedicas.isNullOrEmpty()) {
+                for (horaMedica in horasMedicas) {
+                    myDataset.add(horaMedica)
                 }
+                println("Notifying adapter about dataset change") // Debugging line
+                adapter.notifyDataSetChanged()
+                binding.textView11.visibility = View.GONE // Ocultar el TextView si la respuesta es exitosa y hay horas medicas
+            } else {
+                binding.textView11.visibility = View.VISIBLE // Mostrar el TextView si la respuesta no es exitosa o si no hay horas medicas
             }
         }
     }
